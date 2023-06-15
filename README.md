@@ -1,6 +1,7 @@
 # Objektorientiert und Funktional Programmieren
 ## Arbeitsjournal
 ## Python Aufgaben
+Hier findet man die Aufgaben und deren Python Dateien für eine bessere Übersicht
 ### 1. Objektorientierte Programmierung
 #### 1.1 Prinzipien
 [Python File](https://github.com/alexschillingfhnw/ofp/blob/main/Python%20Files/1.1_prinzipien.py)
