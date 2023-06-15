@@ -2,6 +2,8 @@
 
 # Aufgabe 3
 
+import timeit
+
 def fibonacci_rec(n: int, memo: dict = {}) -> int:
     # Prüft, ob das Ergebnis bereits im Dictionary gespeichert ist
     if n in memo: 
@@ -22,4 +24,9 @@ def fibonacci_rec(n: int, memo: dict = {}) -> int:
 
     return result  
 
-print(fibonacci_rec(40))  
+start_time = timeit.default_timer()
+
+print(fibonacci_rec(10))  
+
+end_time = timeit.default_timer()
+print("Rechenzeit: {} Sekunden".format(end_time - start_time))
