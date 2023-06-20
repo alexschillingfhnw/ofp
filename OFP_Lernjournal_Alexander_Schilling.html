@@ -1,0 +1,1419 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>OFP - Objektorientiert und Funktional Programmieren</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a29aa252-eaf0-425c-9995-69dc09f341be" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.notion.so/icons/computer_gray.svg"/></div><h1 class="page-title">OFP - Objektorientiert und Funktional Programmieren</h1><p class="page-description"></p></header><div class="page-body"><p id="3aae3b4a-3f1e-4c94-9879-db084adca0e0" class="block-color-gray_background"><strong>Inhaltsverzeichnis</strong></p><nav id="20429b4e-ba2a-4e2e-99cd-f4082bc119ac" class="table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7adc417c-9c1c-4a74-833f-09072c84532d">Lernpfad</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#699e0d30-c833-46d1-9852-0129e60abd16">GitHub</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cfac08dd-2c67-438f-8f1c-e74786f2ee1d">1. Objektorientierte Programmierung</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b581756c-6ebf-4a5d-aa07-363e462d9800">1.1 Prinzipien</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9e7afc52-3fd0-440c-afe5-7c2ed929abae">1.1.1 Encapsulation</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#27ee4333-6e53-484e-9371-4fe34db31655">1.1.2 Information Hiding</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#50df90cf-b67a-482c-92b0-20dbf2c9b37f">1.1.3 Polymorphismus</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#617c5c79-185f-483f-8648-688f334129a4">1.1.4 Inheritance</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6c260807-0a55-4148-b18e-d5a5f1aab229">1.1.5 Beispiel</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#35ef2521-b34d-4471-bd54-e3baa11c6422">1.2 Bauelemente</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2759d62b-46e2-4575-890b-551f47d5774d">1.2.1 Objekte</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#93f0801d-e333-4c9f-ae93-60b14e7be6c4">1.2.2 Instanzvariablen</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#673c5137-9212-470d-a6de-b5f5b5c6c748">1.2.3 Operationen</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7e0a7050-7188-425d-bc80-f07be8c6fa9e">1.2.4 Sichtbarkeitsregeln</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9eedd6d8-d58a-44fc-afe7-4a09e53f5de2">1.2.5 Kompabilitätsregeln</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#80c8b251-e481-440e-b045-1a775002fd8b">1.2.6 Kompositions- und Modifikationsmechanismen</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9b33e196-a35c-4506-b4dd-bbc72dd20e57">1.3 Wie hängen die zentralen <em>Bauelemente</em> mit den <em>Prinzipien</em> der objektorientierten Programmierung zusammen?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ce5dca37-7de6-4a69-a998-6ac973275408">1.4 Objektoriertes Programm?</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#71a8f283-a448-4f74-8fd8-2a47bf223774">1.4.1 Space-Beitrag</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b92e8670-650e-44ca-b861-f3240ae4f02e">1.4.2 Code-Beschreibung</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#262eda53-2ecc-49b0-a57d-4a761f278334">1.4.2 Meine Gedanken</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6ae39331-7b1a-4d1f-b3f5-7da560365ad0">1.5. Sprachelemente</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4345ae56-21a9-4a35-8a3b-76ba4e69a984">1.5.1 Objekt Beispiel</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9f269823-711a-4cf1-9e3a-a28e7dc74cf0"><strong><strong>1.5.2 Instanzvariablen Beispiel</strong></strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c52f2557-8d35-48ec-b58d-6ab44b6eb476"><strong><strong>1.5.3 Operationen Beispiel</strong></strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0bc36eb7-1e7e-465b-8a07-fd0aa7870768">1.5.4 Sichtbarkeitsregeln Beispiel</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#768ecb84-cb69-4f4e-9672-eeae96ece172">1.5.5 Kompabilitätsregeln Beispiel</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2d721993-8b5d-4cdc-a1a8-808652889920">1.5.6 Kompositions- und Modifikationsmechanismen Beispiel</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#61c0b499-026e-4388-85ec-7e1b1869d915">1.6. Underscore Zeichen</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a424c8d6-dc5a-46b6-92c9-9b16cac5f623">1.6.1 _name</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#fd1355b7-70ee-453d-94b4-2ff79d0b73a7">1.6.2 name_</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4e927dcd-5d9f-4293-b985-16da3d3ee9c9">1.6.3 __name</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e899dc1c-9e73-4c0b-85d5-d2faf09d574b">1.6.4 __<strong>name</strong>__</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#66909dd7-6c47-4898-9916-214639aff8f4">1.6.5 <strong>Beispiel</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bdf1c12f-a146-4f4b-89b5-3bd01ea56b9e">1.7 <strong><strong>Eine Aufgabe zum selber Ausprobieren: Die OO-Bank</strong></strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3e2026a7-f166-439e-91ef-99e118d26301">2. <strong><strong>Funktionale Programmierung</strong></strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b202dd11-bbe7-4d11-a62d-457b43ce529d">2.1 Einführung</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4f23910a-34bb-4e74-92ec-6b2015c4b4a9"><strong>2.1.1 Funktionen höher Ordnung</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0b5165be-6f3c-4381-bc39-7a032aa32b7d">2.1.2 Aufgabe 1</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#870a574f-c7ff-4c41-928b-3ab82d8a90c9">2.1.3 Aufgabe 2</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#fd5926f9-b253-452b-aba4-597c8ab292e1">2.1.4 Aufgabe 3</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e23195b2-246a-43da-82b3-2fcd47000d4c">2.2 Video Serie: <strong><strong>Functional Programming in Python</strong></strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a3989371-f1bc-4712-980b-b7956ab29a1d">2.2.1 <strong>Section 1: Immutable Data Structures</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#80060b02-0106-4306-a923-15a252848c00">🔒 2.2.2 <strong><strong>Section 2: The filter() Function</strong></strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9e058dad-492e-44e3-b646-e3add7daf562">🔒 2.2.3 <strong><strong>Section 3: The map() Function</strong></strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a2d3416e-dbbb-4302-9293-dccb6139586c">🔒 2.2.4 <strong><strong>Section 4: The reduce() Function</strong></strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#94d55970-0006-49e0-98e1-84c612359564">🔒 2.2.5 <strong><strong>Section 5: Parallel Processing With multiprocessing</strong></strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1912da10-3400-4aea-9c95-7757ebb46233">🔒 2.2.6 <strong><strong>Section 6: Parallel Processing With concurrent.futures</strong></strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a0f37275-0aef-4b3a-aa6d-33112cb9a1e2">2.3 Python Dokumentation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6ecf6693-d9a1-46fb-baf1-541ec1a6e0ee">2.4 Video Einführung</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8d5bf3a4-00f0-4f45-9c1e-abdd5a8c854b">2.4.1 Python Functions (vor allem eine Rekapitulation der grundlegenden Mechanismen)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0efc4df4-9ca5-47f4-849b-0382de126464">2.4.2 Lambda Expressions &amp; Anonymous Functions (vor allem eine Notationsvereinfachung)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d20f9189-4657-4dd4-bccb-7d500da6b63e">2.4.3 Map, Filter and Reduce Functions (die wichtigsten Funktionen höherer Ordnung in Python)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c9cb4aea-570c-4ce6-84e1-19755f1d8df9">2.4.4 Iterators, Iterables, and Itertools in Python (die grundlegende Python-Struktur für lazy evaluation)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20223837-1601-41f3-83cf-ae0e84966982">2.4.5 Generators in Python (ein spezieller Weg zur Erzeugung von Iteratoren)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8bbb3851-92f4-4846-807c-2d15157bdac2">2.5 <strong>Funktionales Programmieren mit Fibonacci-Zahlen</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#53ce1990-74ea-4774-9774-04e651985fb8">2.5.1 Einleitung</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#92273099-1776-492a-9cec-157cbc681d2f">2.5.2 Aufgaben mit rekursiven Fibonacci-Funktionen</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#35019a6e-e5b3-4c33-852b-4bef070b729b">2.5.3 Aufgaben mit Dekorator</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ab3fa5ee-28d6-4c3f-8a9f-65765472639f">2.5.4 Aufgaben mit einem Fibonacci-Zahlen-Generator</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#849d970c-0515-459a-b60d-115c14f38503">2.5.5 Fibonacci-Funktion anders implementiert</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2f581a48-2729-4a3a-8267-5edf145c597f">2.6 <strong>Funktionales Game of Life</strong></a></div></nav><h1 id="7adc417c-9c1c-4a74-833f-09072c84532d" class="">Lernpfad</h1><p id="fb250ac2-11ea-46f5-9fab-3390a0ea8aae" class="">Für das Modul OFP habe ich eine Notion Workspace erstellt, bei der ich einen Lernpfad bearbeitet habe. So kann ich meine Aufgaben und Lernfortschritte und dokumentieren und schlussendlich hier in mein OFP Portfolio übertragen kann. Hier eine Übersicht des Lenpfades:</p><p id="b37d4892-3f5f-4a57-a375-076a5864dd95" class="">
+</p><ul id="224e536b-ab72-4af3-935b-3682f783fe46" class="toggle"><li><details open=""><summary>Aufgaben Ansicht</summary><div id="6093ef31-de46-4a30-9bee-b5828f97dbaa" class="collection-content"><h4 class="collection-title">OFP</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Course name</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Category</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M2.4834 10.9902H4.33594L3.75488 13.8887C3.74121 13.9639 3.72754 14.0664 3.72754 14.1416C3.72754 14.5381 3.99414 14.7637 4.39746 14.7637C4.81445 14.7637 5.09473 14.5449 5.18359 14.1143L5.80566 10.9902H8.79297L8.21191 13.8887C8.19824 13.9639 8.18457 14.0664 8.18457 14.1416C8.18457 14.5381 8.45117 14.7637 8.85449 14.7637C9.27148 14.7637 9.55176 14.5449 9.63379 14.1143L10.2627 10.9902H12.4502C12.9287 10.9902 13.2432 10.6758 13.2432 10.2109C13.2432 9.8418 12.9902 9.56836 12.6006 9.56836H10.5498L11.2129 6.28711H13.3662C13.8379 6.28711 14.1523 5.96582 14.1523 5.50098C14.1523 5.13184 13.9062 4.8584 13.5098 4.8584H11.5L12.0195 2.27441C12.0264 2.21973 12.0469 2.11035 12.0469 2.01465C12.0469 1.625 11.7666 1.39258 11.3633 1.39258C10.9053 1.39258 10.6797 1.63867 10.5977 2.05566L10.0303 4.8584H7.04297L7.5625 2.27441C7.57617 2.21973 7.58984 2.11035 7.58984 2.01465C7.58984 1.625 7.30957 1.39258 6.91309 1.39258C6.44824 1.39258 6.21582 1.63867 6.13379 2.05566L5.57324 4.8584H3.54297C3.06445 4.8584 2.75 5.18652 2.75 5.65137C2.75 6.03418 3.00293 6.28711 3.39258 6.28711H5.28613L4.62305 9.56836H2.63379C2.15527 9.56836 1.84082 9.89648 1.84082 10.3613C1.84082 10.7373 2.09375 10.9902 2.4834 10.9902ZM6.09277 9.56836L6.75586 6.28711H9.74316L9.08008 9.56836H6.09277Z"></path></svg></span>Completed</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M3.29688 14.4561H12.7031C14.1797 14.4561 14.9453 13.6904 14.9453 12.2344V3.91504C14.9453 2.45215 14.1797 1.69336 12.7031 1.69336H3.29688C1.82031 1.69336 1.05469 2.45215 1.05469 3.91504V12.2344C1.05469 13.6973 1.82031 14.4561 3.29688 14.4561ZM3.27637 13.1162C2.70898 13.1162 2.39453 12.8154 2.39453 12.2207V5.9043C2.39453 5.30273 2.70898 5.00879 3.27637 5.00879H12.71C13.2842 5.00879 13.6055 5.30273 13.6055 5.9043V12.2207C13.6055 12.8154 13.2842 13.1162 12.71 13.1162H3.27637ZM6.68066 7.38086H7.08398C7.33008 7.38086 7.41211 7.30566 7.41211 7.05957V6.66309C7.41211 6.41699 7.33008 6.3418 7.08398 6.3418H6.68066C6.44141 6.3418 6.35938 6.41699 6.35938 6.66309V7.05957C6.35938 7.30566 6.44141 7.38086 6.68066 7.38086ZM8.92285 7.38086H9.31934C9.56543 7.38086 9.64746 7.30566 9.64746 7.05957V6.66309C9.64746 6.41699 9.56543 6.3418 9.31934 6.3418H8.92285C8.67676 6.3418 8.59473 6.41699 8.59473 6.66309V7.05957C8.59473 7.30566 8.67676 7.38086 8.92285 7.38086ZM11.1582 7.38086H11.5547C11.8008 7.38086 11.8828 7.30566 11.8828 7.05957V6.66309C11.8828 6.41699 11.8008 6.3418 11.5547 6.3418H11.1582C10.9121 6.3418 10.8301 6.41699 10.8301 6.66309V7.05957C10.8301 7.30566 10.9121 7.38086 11.1582 7.38086ZM4.44531 9.58203H4.84863C5.09473 9.58203 5.17676 9.50684 5.17676 9.26074V8.86426C5.17676 8.61816 5.09473 8.54297 4.84863 8.54297H4.44531C4.20605 8.54297 4.12402 8.61816 4.12402 8.86426V9.26074C4.12402 9.50684 4.20605 9.58203 4.44531 9.58203ZM6.68066 9.58203H7.08398C7.33008 9.58203 7.41211 9.50684 7.41211 9.26074V8.86426C7.41211 8.61816 7.33008 8.54297 7.08398 8.54297H6.68066C6.44141 8.54297 6.35938 8.61816 6.35938 8.86426V9.26074C6.35938 9.50684 6.44141 9.58203 6.68066 9.58203ZM8.92285 9.58203H9.31934C9.56543 9.58203 9.64746 9.50684 9.64746 9.26074V8.86426C9.64746 8.61816 9.56543 8.54297 9.31934 8.54297H8.92285C8.67676 8.54297 8.59473 8.61816 8.59473 8.86426V9.26074C8.59473 9.50684 8.67676 9.58203 8.92285 9.58203ZM11.1582 9.58203H11.5547C11.8008 9.58203 11.8828 9.50684 11.8828 9.26074V8.86426C11.8828 8.61816 11.8008 8.54297 11.5547 8.54297H11.1582C10.9121 8.54297 10.8301 8.61816 10.8301 8.86426V9.26074C10.8301 9.50684 10.9121 9.58203 11.1582 9.58203ZM4.44531 11.7832H4.84863C5.09473 11.7832 5.17676 11.708 5.17676 11.4619V11.0654C5.17676 10.8193 5.09473 10.7441 4.84863 10.7441H4.44531C4.20605 10.7441 4.12402 10.8193 4.12402 11.0654V11.4619C4.12402 11.708 4.20605 11.7832 4.44531 11.7832ZM6.68066 11.7832H7.08398C7.33008 11.7832 7.41211 11.708 7.41211 11.4619V11.0654C7.41211 10.8193 7.33008 10.7441 7.08398 10.7441H6.68066C6.44141 10.7441 6.35938 10.8193 6.35938 11.0654V11.4619C6.35938 11.708 6.44141 11.7832 6.68066 11.7832ZM8.92285 11.7832H9.31934C9.56543 11.7832 9.64746 11.708 9.64746 11.4619V11.0654C9.64746 10.8193 9.56543 10.7441 9.31934 10.7441H8.92285C8.67676 10.7441 8.59473 10.8193 8.59473 11.0654V11.4619C8.59473 11.708 8.67676 11.7832 8.92285 11.7832Z"></path></svg></span>Due Date</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M3.29688 14.4561H12.7031C14.1797 14.4561 14.9453 13.6904 14.9453 12.2344V3.91504C14.9453 2.45215 14.1797 1.69336 12.7031 1.69336H3.29688C1.82031 1.69336 1.05469 2.45215 1.05469 3.91504V12.2344C1.05469 13.6973 1.82031 14.4561 3.29688 14.4561ZM3.27637 13.1162C2.70898 13.1162 2.39453 12.8154 2.39453 12.2207V5.9043C2.39453 5.30273 2.70898 5.00879 3.27637 5.00879H12.71C13.2842 5.00879 13.6055 5.30273 13.6055 5.9043V12.2207C13.6055 12.8154 13.2842 13.1162 12.71 13.1162H3.27637ZM6.68066 7.38086H7.08398C7.33008 7.38086 7.41211 7.30566 7.41211 7.05957V6.66309C7.41211 6.41699 7.33008 6.3418 7.08398 6.3418H6.68066C6.44141 6.3418 6.35938 6.41699 6.35938 6.66309V7.05957C6.35938 7.30566 6.44141 7.38086 6.68066 7.38086ZM8.92285 7.38086H9.31934C9.56543 7.38086 9.64746 7.30566 9.64746 7.05957V6.66309C9.64746 6.41699 9.56543 6.3418 9.31934 6.3418H8.92285C8.67676 6.3418 8.59473 6.41699 8.59473 6.66309V7.05957C8.59473 7.30566 8.67676 7.38086 8.92285 7.38086ZM11.1582 7.38086H11.5547C11.8008 7.38086 11.8828 7.30566 11.8828 7.05957V6.66309C11.8828 6.41699 11.8008 6.3418 11.5547 6.3418H11.1582C10.9121 6.3418 10.8301 6.41699 10.8301 6.66309V7.05957C10.8301 7.30566 10.9121 7.38086 11.1582 7.38086ZM4.44531 9.58203H4.84863C5.09473 9.58203 5.17676 9.50684 5.17676 9.26074V8.86426C5.17676 8.61816 5.09473 8.54297 4.84863 8.54297H4.44531C4.20605 8.54297 4.12402 8.61816 4.12402 8.86426V9.26074C4.12402 9.50684 4.20605 9.58203 4.44531 9.58203ZM6.68066 9.58203H7.08398C7.33008 9.58203 7.41211 9.50684 7.41211 9.26074V8.86426C7.41211 8.61816 7.33008 8.54297 7.08398 8.54297H6.68066C6.44141 8.54297 6.35938 8.61816 6.35938 8.86426V9.26074C6.35938 9.50684 6.44141 9.58203 6.68066 9.58203ZM8.92285 9.58203H9.31934C9.56543 9.58203 9.64746 9.50684 9.64746 9.26074V8.86426C9.64746 8.61816 9.56543 8.54297 9.31934 8.54297H8.92285C8.67676 8.54297 8.59473 8.61816 8.59473 8.86426V9.26074C8.59473 9.50684 8.67676 9.58203 8.92285 9.58203ZM11.1582 9.58203H11.5547C11.8008 9.58203 11.8828 9.50684 11.8828 9.26074V8.86426C11.8828 8.61816 11.8008 8.54297 11.5547 8.54297H11.1582C10.9121 8.54297 10.8301 8.61816 10.8301 8.86426V9.26074C10.8301 9.50684 10.9121 9.58203 11.1582 9.58203ZM4.44531 11.7832H4.84863C5.09473 11.7832 5.17676 11.708 5.17676 11.4619V11.0654C5.17676 10.8193 5.09473 10.7441 4.84863 10.7441H4.44531C4.20605 10.7441 4.12402 10.8193 4.12402 11.0654V11.4619C4.12402 11.708 4.20605 11.7832 4.44531 11.7832ZM6.68066 11.7832H7.08398C7.33008 11.7832 7.41211 11.708 7.41211 11.4619V11.0654C7.41211 10.8193 7.33008 10.7441 7.08398 10.7441H6.68066C6.44141 10.7441 6.35938 10.8193 6.35938 11.0654V11.4619C6.35938 11.708 6.44141 11.7832 6.68066 11.7832ZM8.92285 11.7832H9.31934C9.56543 11.7832 9.64746 11.708 9.64746 11.4619V11.0654C9.64746 10.8193 9.56543 10.7441 9.31934 10.7441H8.92285C8.67676 10.7441 8.59473 10.8193 8.59473 11.0654V11.4619C8.59473 11.708 8.67676 11.7832 8.92285 11.7832Z"></path></svg></span>Finished</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M2.4834 10.9902H4.33594L3.75488 13.8887C3.74121 13.9639 3.72754 14.0664 3.72754 14.1416C3.72754 14.5381 3.99414 14.7637 4.39746 14.7637C4.81445 14.7637 5.09473 14.5449 5.18359 14.1143L5.80566 10.9902H8.79297L8.21191 13.8887C8.19824 13.9639 8.18457 14.0664 8.18457 14.1416C8.18457 14.5381 8.45117 14.7637 8.85449 14.7637C9.27148 14.7637 9.55176 14.5449 9.63379 14.1143L10.2627 10.9902H12.4502C12.9287 10.9902 13.2432 10.6758 13.2432 10.2109C13.2432 9.8418 12.9902 9.56836 12.6006 9.56836H10.5498L11.2129 6.28711H13.3662C13.8379 6.28711 14.1523 5.96582 14.1523 5.50098C14.1523 5.13184 13.9062 4.8584 13.5098 4.8584H11.5L12.0195 2.27441C12.0264 2.21973 12.0469 2.11035 12.0469 2.01465C12.0469 1.625 11.7666 1.39258 11.3633 1.39258C10.9053 1.39258 10.6797 1.63867 10.5977 2.05566L10.0303 4.8584H7.04297L7.5625 2.27441C7.57617 2.21973 7.58984 2.11035 7.58984 2.01465C7.58984 1.625 7.30957 1.39258 6.91309 1.39258C6.44824 1.39258 6.21582 1.63867 6.13379 2.05566L5.57324 4.8584H3.54297C3.06445 4.8584 2.75 5.18652 2.75 5.65137C2.75 6.03418 3.00293 6.28711 3.39258 6.28711H5.28613L4.62305 9.56836H2.63379C2.15527 9.56836 1.84082 9.89648 1.84082 10.3613C1.84082 10.7373 2.09375 10.9902 2.4834 10.9902ZM6.09277 9.56836L6.75586 6.28711H9.74316L9.08008 9.56836H6.09277Z"></path></svg></span>Goal</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Info</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesUrl"><path d="M7.69922 10.8945L8.73828 9.84863C7.91797 9.77344 7.34375 9.51367 6.91992 9.08984C5.76465 7.93457 5.76465 6.29395 6.91309 5.14551L9.18262 2.87598C10.3379 1.7207 11.9717 1.7207 13.127 2.87598C14.2891 4.04492 14.2822 5.67188 13.1338 6.82031L11.958 7.99609C12.1768 8.49512 12.2451 9.10352 12.1289 9.62988L14.0908 7.6748C15.7725 6 15.7793 3.62109 14.084 1.92578C12.3887 0.223633 10.0098 0.237305 8.33496 1.91211L5.95605 4.29785C4.28125 5.97266 4.26758 8.35156 5.96289 10.0469C6.36621 10.4434 6.90625 10.7441 7.69922 10.8945ZM8.30078 5.13184L7.26855 6.17773C8.08203 6.25293 8.66309 6.51953 9.08008 6.93652C10.2422 8.09863 10.2422 9.73242 9.08691 10.8809L6.81738 13.1504C5.66211 14.3057 4.03516 14.3057 2.87305 13.1504C1.71094 11.9883 1.71777 10.3545 2.87305 9.20605L4.04199 8.03027C3.83008 7.53125 3.75488 6.92969 3.87109 6.39648L1.91602 8.35156C0.234375 10.0264 0.227539 12.4121 1.92285 14.1074C3.61816 15.8027 5.99707 15.7891 7.67188 14.1143L10.0439 11.7354C11.7256 10.0537 11.7324 7.6748 10.0371 5.98633C9.64062 5.58301 9.10059 5.28223 8.30078 5.13184Z"></path></svg></span>Link</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Platform</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesFormula"><path d="M5.04688 14.3604H11.2744C11.7324 14.3604 12.0537 14.0801 12.0537 13.6494C12.0537 13.2119 11.7324 12.9248 11.2744 12.9248H5.81934V12.8564L9.30566 8.82324C9.54492 8.57031 9.6748 8.29688 9.6748 8.0166C9.6748 7.73633 9.54492 7.45605 9.29883 7.20996L5.81934 3.2793V3.21094H11.2812C11.7393 3.21094 12.0537 2.92383 12.0537 2.48633C12.0537 2.05566 11.7393 1.77539 11.2812 1.77539H5.05371C4.34277 1.77539 3.95312 2.26758 3.95312 2.81445C3.95312 3.12207 4.07617 3.44336 4.33594 3.69629L8.15039 7.96875V8.05078L4.3291 12.4395C4.06934 12.6924 3.94629 13.0137 3.94629 13.3213C3.94629 13.8682 4.33594 14.3604 5.04688 14.3604Z"></path></svg></span>Progress</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M3.29688 14.4561H12.7031C14.1797 14.4561 14.9453 13.6904 14.9453 12.2344V3.91504C14.9453 2.45215 14.1797 1.69336 12.7031 1.69336H3.29688C1.82031 1.69336 1.05469 2.45215 1.05469 3.91504V12.2344C1.05469 13.6973 1.82031 14.4561 3.29688 14.4561ZM3.27637 13.1162C2.70898 13.1162 2.39453 12.8154 2.39453 12.2207V5.9043C2.39453 5.30273 2.70898 5.00879 3.27637 5.00879H12.71C13.2842 5.00879 13.6055 5.30273 13.6055 5.9043V12.2207C13.6055 12.8154 13.2842 13.1162 12.71 13.1162H3.27637ZM6.68066 7.38086H7.08398C7.33008 7.38086 7.41211 7.30566 7.41211 7.05957V6.66309C7.41211 6.41699 7.33008 6.3418 7.08398 6.3418H6.68066C6.44141 6.3418 6.35938 6.41699 6.35938 6.66309V7.05957C6.35938 7.30566 6.44141 7.38086 6.68066 7.38086ZM8.92285 7.38086H9.31934C9.56543 7.38086 9.64746 7.30566 9.64746 7.05957V6.66309C9.64746 6.41699 9.56543 6.3418 9.31934 6.3418H8.92285C8.67676 6.3418 8.59473 6.41699 8.59473 6.66309V7.05957C8.59473 7.30566 8.67676 7.38086 8.92285 7.38086ZM11.1582 7.38086H11.5547C11.8008 7.38086 11.8828 7.30566 11.8828 7.05957V6.66309C11.8828 6.41699 11.8008 6.3418 11.5547 6.3418H11.1582C10.9121 6.3418 10.8301 6.41699 10.8301 6.66309V7.05957C10.8301 7.30566 10.9121 7.38086 11.1582 7.38086ZM4.44531 9.58203H4.84863C5.09473 9.58203 5.17676 9.50684 5.17676 9.26074V8.86426C5.17676 8.61816 5.09473 8.54297 4.84863 8.54297H4.44531C4.20605 8.54297 4.12402 8.61816 4.12402 8.86426V9.26074C4.12402 9.50684 4.20605 9.58203 4.44531 9.58203ZM6.68066 9.58203H7.08398C7.33008 9.58203 7.41211 9.50684 7.41211 9.26074V8.86426C7.41211 8.61816 7.33008 8.54297 7.08398 8.54297H6.68066C6.44141 8.54297 6.35938 8.61816 6.35938 8.86426V9.26074C6.35938 9.50684 6.44141 9.58203 6.68066 9.58203ZM8.92285 9.58203H9.31934C9.56543 9.58203 9.64746 9.50684 9.64746 9.26074V8.86426C9.64746 8.61816 9.56543 8.54297 9.31934 8.54297H8.92285C8.67676 8.54297 8.59473 8.61816 8.59473 8.86426V9.26074C8.59473 9.50684 8.67676 9.58203 8.92285 9.58203ZM11.1582 9.58203H11.5547C11.8008 9.58203 11.8828 9.50684 11.8828 9.26074V8.86426C11.8828 8.61816 11.8008 8.54297 11.5547 8.54297H11.1582C10.9121 8.54297 10.8301 8.61816 10.8301 8.86426V9.26074C10.8301 9.50684 10.9121 9.58203 11.1582 9.58203ZM4.44531 11.7832H4.84863C5.09473 11.7832 5.17676 11.708 5.17676 11.4619V11.0654C5.17676 10.8193 5.09473 10.7441 4.84863 10.7441H4.44531C4.20605 10.7441 4.12402 10.8193 4.12402 11.0654V11.4619C4.12402 11.708 4.20605 11.7832 4.44531 11.7832ZM6.68066 11.7832H7.08398C7.33008 11.7832 7.41211 11.708 7.41211 11.4619V11.0654C7.41211 10.8193 7.33008 10.7441 7.08398 10.7441H6.68066C6.44141 10.7441 6.35938 10.8193 6.35938 11.0654V11.4619C6.35938 11.708 6.44141 11.7832 6.68066 11.7832ZM8.92285 11.7832H9.31934C9.56543 11.7832 9.64746 11.708 9.64746 11.4619V11.0654C9.64746 10.8193 9.56543 10.7441 9.31934 10.7441H8.92285C8.67676 10.7441 8.59473 10.8193 8.59473 11.0654V11.4619C8.59473 11.708 8.67676 11.7832 8.92285 11.7832Z"></path></svg></span>Started</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Status</th></tr></thead><tbody><tr id="2e85e864-53a9-4099-915d-850ac97ab49a"><td class="cell-title"><a href="https://www.notion.so/Einf-hrungsvideo-2e85e86453a94099915d850ac97ab49a?pvs=21">Einführungsvideo</a></td><td class="cell-C?B}"><span class="selected-value select-value-color-purple">Video</span></td><td class="cell-gavZ">1</td><td class="cell-\ioh"></td><td class="cell-;||~"></td><td class="cell-XgXs">1</td><td class="cell-kWGv"></td><td class="cell-xGVB"><a href="https://youtu.be/YZIUPOGx_ts" class="url-value">https://youtu.be/YZIUPOGx_ts</a></td><td class="cell-VdJA"><span class="selected-value select-value-color-blue">LE2 - Funktional</span></td><td class="cell-\rtA">1</td><td class="cell-_:]D"></td><td class="cell-jDCR"><span class="selected-value select-value-color-brown">Finished</span></td></tr><tr id="44b70ef4-8728-4e9c-9798-203df664cdd1"><td class="cell-title"><a href="https://www.notion.so/Einf-hrungsvideo-zusammenfassen-44b70ef487284e9c9798203df664cdd1?pvs=21">Einführungsvideo zusammenfassen</a></td><td class="cell-C?B}"><span class="selected-value select-value-color-yellow">Zusammenfassung</span></td><td class="cell-gavZ">1</td><td class="cell-\ioh"></td><td class="cell-;||~"></td><td class="cell-XgXs">1</td><td class="cell-kWGv">Unterschied von Funktionen und Prozeduren!!
+→ <em>Prozeduren</em> unterscheiden sich von <em>Funktionen</em> auch in der imperativen Programmierung dadurch, dass <em>Funktionen</em> ein <em>Resultat berechnen</em> (einen Funktionswert) und <em>Prozeduren</em> keinen Rückgabewert haben, sondern einfach ein von mehreren Orten aufrufbares Programmstück darstellen. <em>Methoden</em> sind <em>Funktionen</em> bzw. <em>Prozeduren</em>, die <em>zu einem Objekt</em> gehören.)</td><td class="cell-xGVB"></td><td class="cell-VdJA"><span class="selected-value select-value-color-blue">LE2 - Funktional</span></td><td class="cell-\rtA">1</td><td class="cell-_:]D"></td><td class="cell-jDCR"><span class="selected-value select-value-color-brown">Finished</span></td></tr><tr id="f4dbefed-8b97-4041-92b7-e4d4ca10bb17"><td class="cell-title"><a href="https://www.notion.so/Aufgabe-1-f4dbefed8b97404192b7e4d4ca10bb17?pvs=21">Aufgabe 1</a></td><td class="cell-C?B}"><span class="selected-value select-value-color-green">Programmieren</span></td><td class="cell-gavZ">4</td><td class="cell-\ioh"></td><td class="cell-;||~"></td><td class="cell-XgXs">4</td><td class="cell-kWGv">Löst die am Ende des  Einführungsvideos angegebenen kleinen Übungsaufgaben als Einstieg in den Umgang mit Funktionen höherer Ordnung:
+
+1. anzahl_gerade mit reduce und filter
+
+2. eine Funktion curry, die aus Funktionen mit beliebig vielen Parametern eine neue macht, deren erster Parameter fixiert ist
+
+3. mein_filter nur mit reduce
+
+4. Diskutiert Eure Resultate zu diesen Aufgaben untereinander und mit dem Fachexperten.</td><td class="cell-xGVB"></td><td class="cell-VdJA"><span class="selected-value select-value-color-blue">LE2 - Funktional</span></td><td class="cell-\rtA">1</td><td class="cell-_:]D"></td><td class="cell-jDCR"><span class="selected-value select-value-color-purple">Not started yet</span></td></tr><tr id="2af64dd6-d74b-4944-b322-163bfabf474f"><td class="cell-title"><a href="https://www.notion.so/Funktional-Video-Serien-2af64dd6d74b4944b322163bfabf474f?pvs=21">Funktional - Video Serien</a></td><td class="cell-C?B}"><span class="selected-value select-value-color-purple">Video</span></td><td class="cell-gavZ">6</td><td class="cell-\ioh"></td><td class="cell-;||~"></td><td class="cell-XgXs">6</td><td class="cell-kWGv">Zeigt Vorteile des funktionalen Programmierens:
+Es werden nur <em>unveränderliche Datenstrukturen </em>verwendet
+→ leichte Analysierbarkeit von Programmen
+→ einfache Parallelisierung
+
+Einmal im Speicher abgelegte und mit einem Variablen-Namen bezeichnete Werte können sich nicht mehr ändern und sind diese Werte sind deswegen von nachfolgenden Programmschritten unbeeinflusst. Da diese Daten, einmal erzeugt, nur lesend benutzt werden können, braucht es auch keine weitere teurere Zugriffs-Synchronisation zwischen mehreren parallel ablaufenden Prozessen.</td><td class="cell-xGVB"><a href="https://realpython.com/courses/functional-programming-python/" class="url-value">https://realpython.com/courses/functional-programming-python/</a></td><td class="cell-VdJA"><span class="selected-value select-value-color-blue">LE2 - Funktional</span></td><td class="cell-\rtA">1</td><td class="cell-_:]D"></td><td class="cell-jDCR"><span class="selected-value select-value-color-purple">Not started yet</span></td></tr><tr id="50b0ecef-01d1-4ae8-8898-23728f3e6d1a"><td class="cell-title"><a href="https://www.notion.so/Python-Dokumentation-50b0ecef01d14ae8889823728f3e6d1a?pvs=21">Python Dokumentation</a></td><td class="cell-C?B}"></td><td class="cell-gavZ"></td><td class="cell-\ioh"></td><td class="cell-;||~"></td><td class="cell-XgXs">1</td><td class="cell-kWGv">Python Dokumentation der Python Software Foundation</td><td class="cell-xGVB"><a href="https://docs.python.org/3/howto/functional.html" class="url-value">https://docs.python.org/3/howto/functional.html</a></td><td class="cell-VdJA"><span class="selected-value select-value-color-blue">LE2 - Funktional</span></td><td class="cell-\rtA">0</td><td class="cell-_:]D"></td><td class="cell-jDCR"><span class="selected-value select-value-color-purple">Not started yet</span></td></tr><tr id="d6899612-68f6-4835-8e14-440f3fddc8d0"><td class="cell-title"><a href="https://www.notion.so/Weitere-Videos-d689961268f648358e14440f3fddc8d0?pvs=21">Weitere Videos</a></td><td class="cell-C?B}"><span class="selected-value select-value-color-purple">Video</span></td><td class="cell-gavZ"></td><td class="cell-\ioh"></td><td class="cell-;||~"></td><td class="cell-XgXs">5</td><td class="cell-kWGv">Kurze und kompakte Video-Einführungen zu wesentlichen Themen der funktionalen Programmierung in Python gibt es auch von <em>Socratica</em>. Insbesondere empfohlen seien hier die Themen:
+
+1. <a href="https://youtu.be/NE97ylAnrz4">Python Functions</a> (vor allem eine Rekapitulation der grundlegenden Mechanismen)
+
+2. <a href="https://youtu.be/25ovCm9jKfA">Lambda Expressions &amp; Anonymous Functions</a> (vor allem eine Notationsvereinfachung)
+
+3. <a href="https://youtu.be/hUes6y2b--0">Map, Filter, and Reduce Functions</a> (die wichtigsten Funktionen höherer Ordnung in Python)
+
+4. <a href="https://youtu.be/WR7mO_jYN9g">Iterators, Iterables, and Itertools in Python</a> (die grundlegende Python-Struktur für lazy evaluation)
+
+5. <a href="https://youtu.be/gMompY5MyPg">Generators in Python</a> (ein spezieller Weg zur Erzeugung von Iteratoren)</td><td class="cell-xGVB"></td><td class="cell-VdJA"><span class="selected-value select-value-color-blue">LE2 - Funktional</span></td><td class="cell-\rtA">0</td><td class="cell-_:]D"></td><td class="cell-jDCR"><span class="selected-value select-value-color-purple">Not started yet</span></td></tr><tr id="afc8620e-e826-4e6b-8e75-c6da83a9f159"><td class="cell-title"><a href="https://www.notion.so/Fibonacci-Zahlen-afc8620ee8264e6b8e75c6da83a9f159?pvs=21">Fibonacci Zahlen</a></td><td class="cell-C?B}"><span class="selected-value select-value-color-green">Programmieren</span></td><td class="cell-gavZ">5</td><td class="cell-\ioh"></td><td class="cell-;||~"></td><td class="cell-XgXs">11</td><td class="cell-kWGv">Hier sind Aufgaben, die verschiedene Aspekte des funktionalen Programmierens an einem einfachen Beispiel aufzeigen und erlebbar machen sollen. Versuche diese Aufgaben zu lösen - alleine oder gemeinsam mit anderen. Nimm Unklarheiten und offene Fragen zum Anlass zur Diskussion mit dem Fachexperten.<strong></strong></td><td class="cell-xGVB"><a href="https://spaces.technik.fhnw.ch/storage/uploads/mml/2022/03/02-Fibonacci-Funktionen-1646689824.pdf" class="url-value">https://spaces.technik.fhnw.ch/storage/uploads/mml/2022/03/02-Fibonacci-Funktionen-1646689824.pdf</a></td><td class="cell-VdJA"><span class="selected-value select-value-color-blue">LE2 - Funktional</span></td><td class="cell-\rtA">0.45</td><td class="cell-_:]D"></td><td class="cell-jDCR"><span class="selected-value select-value-color-purple">Not started yet</span></td></tr><tr id="e830d396-fd4d-495a-b80b-a9b1fd48147e"><td class="cell-title"><a href="https://www.notion.so/Game-of-Life-e830d396fd4d495ab80ba9b1fd48147e?pvs=21">Game of Life</a></td><td class="cell-C?B}"><span class="selected-value select-value-color-green">Programmieren</span></td><td class="cell-gavZ"></td><td class="cell-\ioh"></td><td class="cell-;||~"></td><td class="cell-XgXs">4</td><td class="cell-kWGv">Zum Abschluss dieser Einführung in funktionales Programmieren kannst Du als eine etwas umfangreichere Aufgabe das <em>Game of Life</em> programmieren. (Für Interessierte: Ein <a href="https://www.youtube.com/watch?v=DUfdBdrK2ag">arte-Video</a> über das <em>Game of Life</em>.) 
+Dabei muss Du aus mehreren geeignet zu entwerfenden Funktionen eine Lösung zusammensetzen. 
+Eine <a href="https://spaces.technik.fhnw.ch/storage/uploads/mml/2022/04/03-Functional-Game-of-Life-1649159948.pdf">detaillierte Aufgabenstellung findest Du hier</a>. Darin ist auch noch eine kurze Einführung in die Notation von <em>Type Aliases</em> in <em>Python</em> enthalten. 
+Das ist nützlich, wenn man die Typen von Parametern und Resultaten von Funktionen kompakt spezifizieren möchte, um einerseits dem menschlichen Leser Hinweise zu geben, aber auch dem Computer zu ermöglichen allfällige Programmierfehler so zu entdecken.</td><td class="cell-xGVB"><a href="https://spaces.technik.fhnw.ch/storage/uploads/mml/2022/04/03-Functional-Game-of-Life-1649159948.pdf" class="url-value">https://spaces.technik.fhnw.ch/storage/uploads/mml/2022/04/03-Functional-Game-of-Life-1649159948.pdf</a></td><td class="cell-VdJA"><span class="selected-value select-value-color-blue">LE2 - Funktional</span></td><td class="cell-\rtA">0</td><td class="cell-_:]D"></td><td class="cell-jDCR"><span class="selected-value select-value-color-purple">Not started yet</span></td></tr><tr id="ca35ebd7-f1da-4957-b0b0-ab50fcbd98ed"><td class="cell-title"><a href="https://www.notion.so/Prinzipien-der-OP-ca35ebd7f1da4957b0b0ab50fcbd98ed?pvs=21">Prinzipien der OP</a></td><td class="cell-C?B}"><span class="selected-value select-value-color-yellow">Zusammenfassung</span></td><td class="cell-gavZ">1</td><td class="cell-\ioh"></td><td class="cell-;||~"><time>@February 28, 2023</time></td><td class="cell-XgXs">1</td><td class="cell-kWGv">Folgende Prinzipien der Objektorientierung zusammenfassen:
+- Encapsulation
+- Information Hiding
+- Polymorphismus
+- Inheritance
+
+Diese Prinzipien werden verwendet um bestimmte Qualitäten von Software zu bestimmen, wie:
+- Erweiterbarkeit
+- Zuverlässigkeit
+- Korrektheit
+- Verständlichkeit</td><td class="cell-xGVB"></td><td class="cell-VdJA"><span class="selected-value select-value-color-orange">LE1 - Objektorientiert</span></td><td class="cell-\rtA">1</td><td class="cell-_:]D"></td><td class="cell-jDCR"><span class="selected-value select-value-color-brown">Finished</span></td></tr><tr id="a820f7c2-da9c-4479-9353-81de4efbc521"><td class="cell-title"><a href="https://www.notion.so/OOP-Bauelemente-a820f7c2da9c4479935381de4efbc521?pvs=21">OOP Bauelemente</a></td><td class="cell-C?B}"><span class="selected-value select-value-color-yellow">Zusammenfassung</span></td><td class="cell-gavZ">6</td><td class="cell-\ioh"></td><td class="cell-;||~"></td><td class="cell-XgXs">6</td><td class="cell-kWGv">1. Objekte
+2. Instanzvariablen
+3. Operationen
+4. Sichtbarkeitsregeln
+5. Kompabilitätsregeln
+6. Kompositions - und Modifikationsmechanismen
+
+Wie hängen diese zentralen <em>Bauelemente</em> mit den <em>Prinzipien</em> der objektorientierten Programmierung zusammen?</td><td class="cell-xGVB"><a href="https://spaces.technik.fhnw.ch/storage/uploads/mml/2022/04/01-OOP-Bauelemente-1650998694.pdf" class="url-value">https://spaces.technik.fhnw.ch/storage/uploads/mml/2022/04/01-OOP-Bauelemente-1650998694.pdf</a></td><td class="cell-VdJA"><span class="selected-value select-value-color-orange">LE1 - Objektorientiert</span></td><td class="cell-\rtA">1</td><td class="cell-_:]D"></td><td class="cell-jDCR"><span class="selected-value select-value-color-brown">Finished</span></td></tr><tr id="7c6b4b2a-38f7-417b-892e-83f660ba1872"><td class="cell-title"><a href="https://www.notion.so/Ist-dieser-Code-objektorientiert-7c6b4b2a38f7417b892e83f660ba1872?pvs=21">Ist dieser Code objektorientiert?</a></td><td class="cell-C?B}"></td><td class="cell-gavZ">1</td><td class="cell-\ioh"></td><td class="cell-;||~"></td><td class="cell-XgXs">1</td><td class="cell-kWGv"></td><td class="cell-xGVB"></td><td class="cell-VdJA"><span class="selected-value select-value-color-orange">LE1 - Objektorientiert</span></td><td class="cell-\rtA">1</td><td class="cell-_:]D"></td><td class="cell-jDCR"></td></tr><tr id="22d7eafd-17e5-47c1-a3fc-61f93879f45a"><td class="cell-title"><a href="https://www.notion.so/Sprachelemente-22d7eafd17e547c1a3fc61f93879f45a?pvs=21">Sprachelemente</a></td><td class="cell-C?B}"><span class="selected-value select-value-color-green">Programmieren</span><span class="selected-value select-value-color-yellow">Zusammenfassung</span></td><td class="cell-gavZ">6</td><td class="cell-\ioh"></td><td class="cell-;||~"></td><td class="cell-XgXs">6</td><td class="cell-kWGv">Studiert die Konzepte im Tutorial und gebt für jedes der oben erwähnten <em>Bauelemente der objektorientierten Programmierung</em> ein eigenes kleines Python-Beispiel an.</td><td class="cell-xGVB"><a href="https://docs.python.org/3/tutorial/classes.html#a-first-look-at-classes" class="url-value">https://docs.python.org/3/tutorial/classes.html#a-first-look-at-classes</a></td><td class="cell-VdJA"><span class="selected-value select-value-color-orange">LE1 - Objektorientiert</span></td><td class="cell-\rtA">1</td><td class="cell-_:]D"></td><td class="cell-jDCR"><span class="selected-value select-value-color-brown">Finished</span></td></tr><tr id="9478010c-d219-4bc8-9efa-2e4c3d2c1f68"><td class="cell-title"><a href="https://www.notion.so/Underscore-Zeichen-9478010cd2194bc89efa2e4c3d2c1f68?pvs=21">Underscore Zeichen</a></td><td class="cell-C?B}"><span class="selected-value select-value-color-yellow">Zusammenfassung</span></td><td class="cell-gavZ">4</td><td class="cell-\ioh"></td><td class="cell-;||~"></td><td class="cell-XgXs">4</td><td class="cell-kWGv">Die Programmiersprache <em>Python</em> verwendet das <em>Underscore-Zeichen</em> &quot;_&quot; sowie vor als auch nach Namen um verschiedene Dinge auszudrücken - z.B. &quot;Sichtbarkeitsregeln&quot;, wie sie für die Umsetzung von <em>Information Hiding</em> benötigt werden. Recherchiert einmal die verschiedenen Varianten und stellt Euch eine kurze Liste zusammen mit den Bedeutungen von:
+    ◦ _name
+    ◦ name_
+    ◦ __name
+    ◦ __name__<strong></strong></td><td class="cell-xGVB"></td><td class="cell-VdJA"><span class="selected-value select-value-color-orange">LE1 - Objektorientiert</span></td><td class="cell-\rtA">1</td><td class="cell-_:]D"></td><td class="cell-jDCR"><span class="selected-value select-value-color-brown">Finished</span></td></tr><tr id="47efcb33-3089-4b62-a80e-4786b40afe97"><td class="cell-title"><a href="https://www.notion.so/Eine-Aufgabe-zum-selber-Ausprobieren-Die-OO-Bank-47efcb3330894b62a80e4786b40afe97?pvs=21">Eine Aufgabe zum selber Ausprobieren: Die OO-Bank</a></td><td class="cell-C?B}"></td><td class="cell-gavZ">1</td><td class="cell-\ioh"></td><td class="cell-;||~"></td><td class="cell-XgXs">3</td><td class="cell-kWGv">Um Programmierung und Programmentwurf zu verstehen, muss man es einmal selbst machen. Als Anregung dazu möge folgendes <a href="https://spaces.technik.fhnw.ch/storage/uploads/mml/2022/04/03-Aufgabe-OO-Bank-1650999824.pdf">Aufgabenblatt</a> dienen.</td><td class="cell-xGVB"></td><td class="cell-VdJA"><span class="selected-value select-value-color-orange">LE1 - Objektorientiert</span></td><td class="cell-\rtA">0.33</td><td class="cell-_:]D"></td><td class="cell-jDCR"><span class="selected-value select-value-color-purple">Not started yet</span></td></tr><tr id="bffda68e-9f48-4910-82c2-cefff0a4644d"><td class="cell-title"><a href="https://www.notion.so/Decorator-Video-bffda68e9f48491082c2cefff0a4644d?pvs=21">Decorator Video</a></td><td class="cell-C?B}"><span class="selected-value select-value-color-purple">Video</span></td><td class="cell-gavZ"></td><td class="cell-\ioh"></td><td class="cell-;||~"></td><td class="cell-XgXs">1</td><td class="cell-kWGv"></td><td class="cell-xGVB"></td><td class="cell-VdJA"></td><td class="cell-\rtA">0</td><td class="cell-_:]D"></td><td class="cell-jDCR"><span class="selected-value select-value-color-purple">Not started yet</span></td></tr><tr id="428a8e11-9891-4e34-95cc-8bbaaff59b45"><td class="cell-title"><a href="https://www.notion.so/Functional-Advent-Of-Code-428a8e1198914e3495cc8bbaaff59b45?pvs=21">Functional Advent Of Code</a></td><td class="cell-C?B}"><span class="selected-value select-value-color-green">Programmieren</span></td><td class="cell-gavZ"></td><td class="cell-\ioh"></td><td class="cell-;||~"></td><td class="cell-XgXs">1</td><td class="cell-kWGv"><a href="https://adventofcode.com/2020/day/11">Advent of Code Aufgabe vom Tag 11 in 2020</a></td><td class="cell-xGVB"></td><td class="cell-VdJA"><span class="selected-value select-value-color-blue">LE2 - Funktional</span></td><td class="cell-\rtA">0</td><td class="cell-_:]D"></td><td class="cell-jDCR"><span class="selected-value select-value-color-purple">Not started yet</span></td></tr></tbody></table><br/></div></details></li></ul><h1 id="699e0d30-c833-46d1-9852-0129e60abd16" class="">GitHub</h1><p id="523b14b7-e99b-4d56-8697-fca978352cff" class="">Die Python-Dateien mit meinem Code für Aufgaben oder zum Verständnis von Prinzipien und Regeln sind hier in meinem <a href="https://github.com/alexschillingfhnw/ofp">GitHub-Repository</a> gespeichert.</p><h1 id="cfac08dd-2c67-438f-8f1c-e74786f2ee1d" class="">1. Objektorientierte Programmierung</h1><h2 id="b581756c-6ebf-4a5d-aa07-363e462d9800" class="">1.1 Prinzipien</h2><p id="6869b685-386e-4f30-bdac-da028ad2dadd" class="">Die folgenden vier Punkte sind Prinzipien der objektorientierten Programmierung. Sie grenzen sich gegenseitig ab, um eine klare Struktur im Code zu gewährleisten.</p><h3 id="9e7afc52-3fd0-440c-afe5-7c2ed929abae" class="">1.1.1 Encapsulation</h3><p id="6531338d-ce01-4b26-a5c2-04f0fcc93d15" class="">Die Encapsulation wird verwendet, um den Zugriff auf Methoden und Variablen einzuschränken. Bei der Encapsulation werden Code und Daten in einer einzigen Einheit zusammengepackt, damit sie nicht versehentlich geändert werden. Diese Arten von Variablen werden als private Variablen bezeichnet. Zudem werden die Variablen einer Klasse vor anderen Klassen versteckt und es kann nur über die Methoden ihrer aktuellen Klasse darauf zugegriffen werden. </p><h3 id="27ee4333-6e53-484e-9371-4fe34db31655" class="">1.1.2 Information Hiding</h3><p id="bb89356f-e7ec-4de9-9a22-34e51ac93ac1" class="">Information Hiding beschreibt das Konzept, dass Objekte die Details ihrer Implementierung vor anderen Objekten verstecken sollen, um unerwünschte Seiteneffekte zu vermeiden und den Code wartbarer zu machen. Es wird durch die Verwendung von privaten, geschützten und öffentlichen Attributen in Klassen implementiert. Das Verbergen von Daten minimiert auch die Systemkomplexität, um die Robustheit zu erhöhen, indem Abhängigkeiten zwischen Softwareanforderungen begrenzt werden.</p><h3 id="50df90cf-b67a-482c-92b0-20dbf2c9b37f" class="">1.1.3 Polymorphismus</h3><p id="ad3a248a-07df-4efa-ade3-103d6c135400" class="">Polymorphismus beschreibt die Fähigkeit von Objekten, unter verschiedenen Bedingungen unterschiedliches Verhalten zu zeigen. Es ermöglicht, dass Objekte mit denselben Methodennamen unterschiedliche Funktionen ausführen und bietet damit Flexibilität und Erweiterbarkeit im Code.</p><h3 id="617c5c79-185f-483f-8648-688f334129a4" class="">1.1.4 Inheritance</h3><p id="f5d4b0cf-bfac-475e-918a-8b5cd4a2eb30" class="">Inheritance beschreibt die Fähigkeit einer Klasse, Eigenschaften und Methoden von einer anderen Klasse zu erben und sie anzupassen oder zu erweitern. Es ermöglicht eine effiziente Wiederverwendung von Code, die Vermeidung von Redundanz und die Schaffung von spezialisierteren Klassen.</p><h3 id="6c260807-0a55-4148-b18e-d5a5f1aab229" class="">1.1.5 Beispiel</h3><p id="7873354f-066f-4992-8998-6c3dbf38c262" class="">Dieser Code erstellt zwei Klassen - <code><strong>Player</strong></code> und <code><strong>Goalkeeper</strong></code> - und demonstriert deren Funktionalität durch Erstellung von Objekten. </p><p id="fac447a0-f6ba-46ea-9a66-20030088227d" class="">In der Klasse <code><strong>Player</strong></code> hat jeder Spieler einen Namen (<code><strong>name</strong></code>), eine Trikotnummer (<code><strong>number</strong></code>) und eine Position (<code><strong>position</strong></code>). Die Anzahl der Tore, die der Spieler erzielt hat, wird ebenfalls gespeichert (<code><strong>goals_scored</strong></code>). In dieser Klasse wird die Information in geschützten Attributen gespeichert, die durch Methoden innerhalb der Klasse abgerufen werden können.  </p><p id="9c211b05-f749-4af9-9c22-b9b4ea4f6319" class=""><code><strong>Goalkeeper</strong></code> ist eine Unterklasse der <code><strong>Player</strong></code><mark class="highlight-blue"><strong> </strong></mark>Klasse, die zum einen die gleiche Eigenschaften haben wie ein Spieler wie auch spezifische Eigenschaften und Methoden für Torwarte enthält, wie zum Beispiel <code><strong>make_save</strong></code><mark class="highlight-blue"><strong> </strong></mark>und <code><strong>play_goalkeeper</strong></code><mark class="highlight-blue"><strong>. </strong></mark>Der Code erstellt eine Instanz jedes Typs von Objekt und führt einige Methoden aus, um ihre Funktionalität zu demonstrieren. Am Ende werden die Attribute jedes Objekts ausgegeben, um zu zeigen, dass sie korrekt aktualisiert wurden.</p><pre id="d3eadc75-6c33-46ff-9af9-f96a82724103" class="code"><code>class Player:
+    def __init__(self, name, number, position):
+        self._name = name                       # Information Hiding: name is a protected attribute
+        self._number = number                   # Information Hiding: number is a protected attribute
+        self._position = position               # Information Hiding: position is a protected attribute
+        self._goals_scored = 0                  # Information Hiding: goals_scored is a protected attribute
+
+    # Encapsulation: describe_player and score_goal methods are part of the Player class and operate on its data
+    def describe_player(self):
+        print(&quot;{} wears jersey number {} and plays {}.&quot;.format(self._name, self._number, self._position))
+
+    def score_goal(self):
+        self._goals_scored += 1
+        print(&quot;{} has scored a goal! Total goals scored: {}&quot;.format(self._name, self._goals_scored))
+
+    # Polymorphismus: The __str__ method allows the Player object to be printed as a string
+    def __str__(self):
+        return &quot;{} {} {} {}&quot;.format(self._name, self._position, self._number, self._goals_scored)
+
+    # Inheritance: A subclass of Player for goalkeepers, which has an additional attribute
+    def play_goalkeeper(self):
+        print(&quot;{} is now playing as a goalkeeper!&quot;.format(self._name))
+
+class Goalkeeper(Player):
+    def __init__(self, name, number):
+        super().__init__(name, number, &quot;goalkeeper&quot;)
+        self._saves = 0
+
+    # Polymorphismus: The __str__ method is overridden to include the saves attribute
+    def __str__(self):
+        return f&quot;{super().__str__()}, {self._saves}&quot;
+    
+    def make_save(self):
+        self._saves += 1
+        print(&quot;{} has made a save! Total saves: {}&quot;.format(self._name, self._saves))
+
+
+# Create a Player objects
+player1 = Player(&quot;Lionel Messi&quot;, 10, &quot;forward&quot;)
+player2 = Player(&quot;Virgil van Dijk&quot;, 4, &quot;defender&quot;)
+player1.describe_player()                       # Output: Lionel Messi wears jersey number 10 and plays forward.
+player2.describe_player()                       # Output: Virgil van Dijk wears jersey number 4 and plays defender.
+player1.score_goal()                            # Output: Lionel Messi has scored a goal! Total goals scored: 1
+player1.score_goal()                            # Output: Lionel Messi has scored a goal! Total goals scored: 2
+player2.score_goal()                            # Output: Virgil van Dijk has scored a goal! Total goals scored: 1
+print(player1)                                  # Output: Lionel Messi forward 10 2
+print(player2)                                  # Output: Virgil van Dijk defender 4 1
+
+# Create a Goalkeeper object
+gk1 = Goalkeeper(&quot;Yann Sommer&quot;, 1)
+gk1.describe_player()                           # Output: Yann Sommer wears jersey number 1 and plays goalkeeper.
+gk1.play_goalkeeper()                           # Output: Yann Sommer is now playing as a goalkeeper!
+gk1.make_save()                                 # Output: Yann Sommer has made a save! Total saves: 1
+gk1.make_save()                                 # Output: Yann Sommer has made a save! Total saves: 2
+print(gk1)                                      # Output: Yann Sommer goalkeeper 1 0, 2</code></pre><h2 id="35ef2521-b34d-4471-bd54-e3baa11c6422" class="">1.2 Bauelemente</h2><h3 id="2759d62b-46e2-4575-890b-551f47d5774d" class="">1.2.1 Objekte</h3><p id="996c8ca8-f34a-4061-83cb-cf9cab39b4f1" class="">Objekte sind Instanzen einer Klasse, die Daten und Verhalten darstellen. Sie können als Container für variablenähnliche Eigenschaften und Methoden verwendet werden.</p><h3 id="93f0801d-e333-4c9f-ae93-60b14e7be6c4" class="">1.2.2 Instanzvariablen</h3><p id="358a1980-c7b0-474e-ab56-092effcdec2a" class="">Instanzvariablen sind Variablen, die einem bestimmten Objekt zugeordnet sind. Sie können in der Klasse definiert werden und haben verschiedene Sichtbarkeitsbereiche, je nachdem, wo sie definiert werden.</p><h3 id="673c5137-9212-470d-a6de-b5f5b5c6c748" class="">1.2.3 Operationen</h3><p id="de3ec78f-c93c-4173-86f7-ed04221a6f02" class="">Operationen sind Methoden der Klasse, die die Instanzvariablen des Objekts manipulieren oder darauf zugreifen. Sie können öffentlich, geschützt oder privat sein und dementsprechend auf Objekte innerhalb oder ausserhalb der Klasse zugreifen.</p><h3 id="7e0a7050-7188-425d-bc80-f07be8c6fa9e" class="">1.2.4 Sichtbarkeitsregeln</h3><p id="15a496cf-9baa-488b-a15b-8a59d140459f" class="">Sichtbarkeitsregeln definieren, welche Teile des Codes auf Instanzvariablen und Methoden zugreifen können. Es gibt drei Sichtbarkeitsbereiche: öffentlich, geschützt und privat. Öffentliche Elemente können von überall aus zugegriffen werden, geschützte Elemente können nur innerhalb der Klasse und ihrer Unterklassen aufgerufen werden, und private Elemente können nur innerhalb der Klasse selbst aufgerufen werden.</p><h3 id="9eedd6d8-d58a-44fc-afe7-4a09e53f5de2" class="">1.2.5 Kompabilitätsregeln</h3><p id="bb651c3a-6462-419b-b910-4949d83489d5" class="">Kompabilitätsregeln definieren, wie Objekte aufeinander bezogen werden können. Sie ermöglichen es, dass Objekte unterschiedlicher Klassen zusammenarbeiten und konsistent interagieren können.</p><h3 id="80c8b251-e481-440e-b045-1a775002fd8b" class="">1.2.6 Kompositions- und Modifikationsmechanismen</h3><p id="12e66b86-7dba-4d2b-bd1d-c1d70f7da273" class="">Kompositions- und Modifikationsmechanismen beschreiben, wie man aus anderen Objekten komplexe Objekte erstellen und bearbeiten kann. Dazu kann man Vererbung, Aggregation, Assoziation und Komposition nutzen, um Objekte erstellen zu können, die aus vielen anderen Objekten bestehen. Es ist auch möglich, Objekte während der Laufzeit dynamisch zu bearbeiten.</p><h2 id="9b33e196-a35c-4506-b4dd-bbc72dd20e57" class="">1.3 Wie hängen die zentralen <em>Bauelemente</em> mit den <em>Prinzipien</em> der objektorientierten Programmierung zusammen?</h2><p id="da03440c-f075-468a-b2d6-c66431326b21" class="">Die Bauelemente der objektorientierten Programmierung sind sehr wichtig, um die Prinzipien der objektorientierten Programmierung zu verstehen. Mit diesen Bauelementen kann man die Prinzipien effektiv umsetzen und dadurch den Code klar strukturieren und leichter warten.</p><p id="1151e1e9-da8f-4759-9033-46f648b664ae" class="">Die Bauelemente bieten auch viele Möglichkeiten, den Code zu optimieren und die Leistung zu verbessern. Zum Beispiel kann die Verwendung von Inheritance und Polymorphismus dazu beitragen, den Code wiederverwendbar zu machen und komplexe Anwendungen einfacher zu entwickeln. Sie lassen sich ausserdem sehr gut organisieren, um die Effizienz und Produktivität bei der Softwareentwicklung zu erhöhen. Mit Objekten, Klassen und Schnittstellen kann man komplexe Probleme auf eine logische und strukturierte Weise angehen, dem das menschliches Denken ähnelt, wodurch Fehler und Probleme leichter zu identifizieren und zu beheben sind.</p><h2 id="ce5dca37-7de6-4a69-a998-6ac973275408" class="">1.4 Objektoriertes Programm?</h2><h3 id="71a8f283-a448-4f74-8fd8-2a47bf223774" class="">1.4.1 Space-Beitrag</h3><p id="4cbc8657-a191-4555-952f-0092d9c98a77" class="">Am 1.05.2022 wurde ein <a href="https://spaces.technik.fhnw.ch/spaces/objektorientiert-und-funktional-programmieren/beitraege/kleiner-ramp-up-zu-oop">Space-Beitrag</a> veröffentlicht, bei dem der folgende Code publiziert wurde. Die Aufgabe der Studenten war es, herauszufinden, ob der Code objektorientiert ist und ihre Meinung dazu anzugeben.</p><div id="eb3e0399-8a94-4657-9aea-ec69bae3c08a" class="column-list"><div id="9e5d2837-f8a9-486e-aa3c-56cb67bf6182" style="width:50%" class="column"><pre id="d09b6ab6-35dc-45d8-8618-942924aa7ecd" class="code"><code>from typing import Callable
+
+Averager = (Callable[[float], None], Callable[[], float])
+
+
+def new_averager() -&gt; Averager:
+    tot, num = &#x27;tot&#x27;, &#x27;num&#x27;
+    state = {tot: 0, num: 0}
+
+    def add_value(x: float):
+        state[tot] += x
+        state[num] += 1
+
+    def get_average() -&gt; float:
+        return state[tot] / state[num]
+
+    return add_value, get_average</code></pre></div><div id="8d4f3188-3cd4-44ad-b064-66e11a840d46" style="width:50%" class="column"><p id="bf98b422-2fff-4f27-a4d0-e5f3641fb1f9" class=""><strong>Typing &amp; Callable Erklärung:</strong></p><p id="09b7ba41-49da-4c1e-975a-937f0ed9bb19" class="">Für mein Verständnis habe ich zu diesem Thema einige Begriffe hier zusammengefasst:</p><figure id="9276eb5a-c6c7-4105-a392-1a91f318d0dd" class="link-to-page"><a href="https://www.notion.so/OOP-Python-Begriffe-9276eb5ac6c74105a3921a91f318d0dd?pvs=21">OOP Python Begriffe</a></figure><p id="69079452-2f72-4be7-95b3-61f045f95fb8" class="">(Falls Link nicht funktioniert, Siehe <a href="https://github.com/alexschillingfhnw/ofp/blob/main/Python%20Files/typing.ipynb">Datei auf GitHub</a>)</p><p id="028da2d3-772d-4bb7-b923-bc586790ddc5" class="">
+</p></div></div><h3 id="b92e8670-650e-44ca-b861-f3240ae4f02e" class="">1.4.2 Code-Beschreibung</h3><p id="1e4318d1-e7d6-420f-a80c-1e81d71e22e9" class="">Dieser Code definiert eine Funktion <code><strong>new_averager</strong></code>, die ein Tupel von zwei Funktionen (<code><strong>add_value</strong></code> und <code><strong>get_average</strong></code>) zurückgibt. Diese Funktionen können verwendet werden, um einen Durchschnittswert von Fliesskommazahlen zu berechnen, die der Funktion übergeben werden.</p><p id="3ede4b67-4225-4c2e-96ab-fa79a1af850f" class="">Die Funktion <code><strong>add_value</strong></code> fügt den übergebenen Wert zur Summe hinzu und erhöht die Anzahl der Werte um 1. Die Funktion <code><strong>get_average</strong></code> gibt den Durchschnittswert der übergebenen Werte zurück.</p><p id="5b37d67c-31f0-4dd0-8714-6a0927f3424a" class="">Das Tupel, das von <code><strong>new_averager</strong></code> zurückgegeben wird, hat den Typ <code><strong>Averager</strong></code>, der als Alias für ein Tupel von zwei Funktionen definiert ist. Die erste Funktion (<code><strong>Callable[[float], None]</strong></code>) nimmt einen Float-Wert entgegen und gibt nichts zurück, während die zweite Funktion (<code><strong>Callable[[], float]</strong></code>) keinen Parameter erfordert und einen Float-Wert zurückgibt.</p><p id="1eb39264-9e94-4a12-ae42-767ebb6fba5d" class="">Die Variablen <code><strong>tot</strong></code> und <code><strong>num</strong></code> sind Schlüsselwörter für einen Wörterbuch-Datentyp, der als interner Zustand verwendet wird, um die Summe aller hinzugefügten Werte und die Anzahl der hinzugefügten Werte zu verfolgen.</p><h3 id="262eda53-2ecc-49b0-a57d-4a761f278334" class="">1.4.2 Meine Gedanken</h3><p id="92529750-f100-4128-ab5c-fa920763eb5f" class="">Dieser Code ist nicht objektorientiert, da keine Klassen oder Objekte verwendet werden. Der Code ist stattdessen funktional, da Funktionen als grundlegende Bausteine angewandt werden. Der Code hat einen internen Zustand, um die Durchschnitt der übergebenen Werte zu berechnen. Bei der objektorientere Programmierung würde man hierzu eine Klasse definieren, die den Zustand speichert.</p><h2 id="6ae39331-7b1a-4d1f-b3f5-7da560365ad0" class="">1.5. Sprachelemente</h2><p id="50ffee7c-0ffb-4403-bbda-35c3d83956ad" class="">In dieser Aufgabe war es gefordert die <a href="https://docs.python.org/3/tutorial/classes.html#a-first-look-at-classes">Sprachelemente in Python</a> zu studieren und darauf für jedes Bauelement ein kleines Code-Beispiel zu programmieren.</p><h3 id="4345ae56-21a9-4a35-8a3b-76ba4e69a984" class="">1.5.1 Objekt Beispiel</h3><p id="4b8117b6-2af2-42f5-a3a5-d569eb00c099" class="">In diesem Beispiel habe ich eine Klasse <code><strong>Dog</strong></code> definiert, die einen Namen  <code><strong>name</strong></code> und ein Alter <code><strong>age</strong></code>  hat. Dazu besitzt die Klasse noch eine Methode <code><strong>bark()</strong></code>, welche beim Aufrufen &quot;Woof!&quot; ausgibt. Ich habe dann eine Instanz dieser Klasse namens <code><strong>my_dog</strong></code> erstellt und gab dem Hund-Objekt den Namen “Goodie” und das Alter “10” aus und liess ihn bellen.</p><pre id="959103bb-e45b-4ec2-8d74-4bfdc28035a8" class="code"><code>class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def bark(self):
+        print(&quot;Woof!&quot;)
+
+my_dog = Dog(&quot;Goodie&quot;, 10)
+print(my_dog.name)
+my_dog.bark()
+
+# Output:
+Goodie
+Woof!</code></pre><h3 id="9f269823-711a-4cf1-9e3a-a28e7dc74cf0" class=""><strong><strong>1.5.2 Instanzvariablen Beispiel</strong></strong></h3><p id="7dda436b-e65f-4167-ad03-49fc37c0c2cb" class="">In diesem Beispiel habe ich eine Klasse <code><strong>Student</strong></code> definiert, die einen Vornamen (<code><strong>first</strong></code>) und einen Nachnamen (<code><strong>last</strong></code>) hat. Ich habe dann zwei Instanzen dieser Klasse erstellt; <code><strong>student1</strong></code> und <code><strong>student2</strong></code><mark class="highlight-blue"><strong> </strong></mark>. Danach gab den Vornamen der ersten Instanz und den Nachnamen der zweiten aus.</p><pre id="416cf8b1-ae3a-4e28-9b48-66dbc060c18b" class="code"><code>class Student:
+    def __init__(self, first, last):
+        self.first = first
+        self.last = last
+
+student1 = Student(&quot;Nicko&quot;, &quot;Jorgensson&quot;)
+student2 = Student(&quot;Marco&quot;, &quot;Odermatt&quot;)
+
+print(student1.first)                    
+print(student2.last)
+
+# Output:
+Nicko
+Odermatt                   </code></pre><h3 id="c52f2557-8d35-48ec-b58d-6ab44b6eb476" class=""><strong><strong>1.5.3 Operationen Beispiel</strong></strong></h3><pre id="e06382cf-87f5-4351-a3c4-d943a3fc2dc4" class="code"><code>class Player:
+    def __init__(self, name, position, goals = 0):
+        self.name = name
+        self.position = position
+        self.goals = goals
+
+    def score_goal(self):
+        self.goals += 1
+        print(self.name, &quot;scored a goal!&quot;)
+
+player1 = Player(&quot;Mohamed Salah&quot;, &quot;Winger&quot;, 25)
+player2 = Player(&quot;Darwin Nunez&quot;, &quot;Striker&quot;, 18)
+
+player1.score_goal()                                
+player2.score_goal()                               
+player1.score_goal()                               
+
+print(&quot;Salah has scored&quot;, player1.goals, &quot;goals.&quot;)  
+print(&quot;Nunez has scored&quot;, player2.goals, &quot;goals.&quot;)  
+
+# Output:
+Mohamed Salah scored a goal!
+Darwin Nunez scored a goal!
+Mohamed Salah scored a goal!
+Salah has scored 27 goals.
+Nunez has scored 19 goals.</code></pre><h3 id="0bc36eb7-1e7e-465b-8a07-fd0aa7870768" class="">1.5.4 Sichtbarkeitsregeln Beispiel</h3><p id="842e57a4-2e0b-4ea3-aef3-c28148066410" class="">In diesem Beispiel habe ich eine Klasse <code><strong>BankAccount</strong></code> definiert, die eine <code><strong>account_number</strong></code>, einen <code><strong>_balance</strong></code> und einen <code><strong>__pin</strong></code> hat. Die <code><strong>account_number</strong></code> ist als öffentliche Variable definiert, während <code><strong>_balance</strong></code> als geschützte Variable definiert ist, indem ich sie mit einem Underscore am Anfang versehen habe. Der <code><strong>__pin</strong></code> ist als private Variable definiert, indem ich ihn mit zwei Underscores am Anfang versehen habe.</p><p id="9e083197-2be4-4b83-96e3-28fa47ab9a45" class="">Ich habe auch die Methoden <code><strong>get_balance()</strong></code> und <code><strong>set_balance()</strong></code> erstellt, um auf den <code><strong>_balance</strong></code> zuzugreifen oder ihn zu aktualisieren. Ich habe auch die Methode <code><strong>get_pin()</strong></code> erstellt, um den <code><strong>__pin</strong></code> abzurufen.</p><p id="863ed8ae-f1fc-4a92-af6b-64776d54a74d" class="">Ich habe dann eine Instanz der <code><strong>BankAccount</strong></code>-Klasse erstellt und die Methoden <code><strong>get_balance()</strong></code>, <code><strong>set_balance()</strong></code> und <code><strong>get_pin()</strong></code> aufgerufen, um die <code><strong>account_number</strong></code>, den <code><strong>_balance</strong></code> und den <code><strong>__pin</strong></code> abzurufen oder zu ändern.</p><p id="bdb64d8d-b062-46f3-bbd2-8daf80eb41eb" class="">Schliesslich habe ich versucht, direkt auf den <code><strong>__pin</strong></code> zuzugreifen, was aufgrund der Sichtbarkeitsregel fehlgeschlagen ist und einen <code><strong>AttributeError</strong></code> ausgelöst hat.</p><pre id="f044935e-c0aa-45ed-bc5d-6a0abac95ff9" class="code"><code>class BankAccount:
+    def __init__(self, account_number, balance):
+        self.account_number = account_number  # public variable
+        self._balance = balance               # protected variable
+        self.__pin = &quot;9988&quot;                   # private variable
+
+    def get_balance(self):
+        return self._balance
+
+    def set_balance(self, amount):
+        self._balance = amount
+
+    def get_pin(self):
+        return self.__pin
+
+my_account = BankAccount(&quot;111222333444&quot;, 2000)
+
+print(my_account.account_number)   
+print(my_account.get_balance())            
+
+my_account.set_balance(2200)
+print(my_account.get_balance())      
+
+print(my_account.get_pin())            
+
+# Output:
+111222333444
+2000
+2200
+9988
+
+print(my_account.__pin)    
+
+# Output:                 
+AttributeError: &#x27;BankAccount&#x27; object has no attribute &#x27;__pin&#x27;</code></pre><h3 id="768ecb84-cb69-4f4e-9672-eeae96ece172" class="">1.5.5 Kompabilitätsregeln Beispiel</h3><p id="732469c7-63fc-4ef0-aab3-99c03151ae70" class="">In diesem Beispiel habe ich eine Klasse <code><strong>Student</strong></code> und eine Klasse <code><strong>Dog</strong></code> definiert, die jeweils eine <code><strong>name</strong></code>-Variable und eine Methode <code><strong>say_hello()</strong></code> bzw. <code><strong>bark()</strong></code> haben. Diese Klassen können beide jeweils unabhängig voneinander verwendet werden.</p><p id="c71f9e5c-080e-47c5-8ace-79b79f4c4a38" class="">Ich habe dann eine weitere Klasse <code><strong>Student_Dog_Combo</strong></code> definiert, die eine <code><strong>Student</strong></code> und eine <code><strong>Dog</strong></code> Instanz als Attribute hat. Die <code><strong>greet()</strong></code> Methode ruft die <code><strong>say_hello()</strong></code> Methode von <code><strong>Student</strong></code> und die <code><strong>bark()</strong></code> Methode <code><strong>Dog</strong></code> auf. Beim Aufrufen wird man von beiden Objekte begrüsst. Hier ist gut zu sehen, wie die Student_Dog_Combo Klasse mit den anderen Klassen interagiert, ohne dass diese geändert werden müssen.</p><pre id="1363a33a-6891-4bb3-8f0f-7e92aa9c1dc8" class="code"><code>class Student:
+    def __init__(self, name):
+        self.name = name
+
+    def say_hello(self):
+        print(&quot;Hello, my name is {}!&quot;.format(self.first))
+
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+    def bark(self):
+        print(&quot;Woof!&quot;)
+
+class Student_Dog_Combo:
+    def __init__(self, student, dog):
+        self.student = student
+        self.dog = dog
+
+    def greet(self):
+        self.student.say_hello()
+        self.dog.bark()
+
+student1 = Student(&quot;Nicko&quot;)                         
+dog1 = Dog(&quot;Goodie&quot;)
+combo1 = Student_Dog_Combo(student1, dog1)
+combo1.greet()                                  
+
+student2 = Student(&quot;Marco&quot;)
+dog2 = Dog(&quot;Rolli&quot;)
+combo2 = Student_Dog_Combo(student2, dog2)
+combo2.greet()                                  
+
+# Output: 
+Hello, my name is Nicko!
+Woof!
+Hello, my name is Marco!
+Woof!</code></pre><h3 id="2d721993-8b5d-4cdc-a1a8-808652889920" class="">1.5.6 Kompositions- und Modifikationsmechanismen Beispiel</h3><p id="fd24df4c-bb62-4cb1-b5c5-5d4b149f8def" class="">In diesem Beispiel habe ich eine Klasse <code><strong>Person</strong></code> definiert, die einen Namen, ein Geburtsjahr und eine Liste von Freunden hat. Diese Klasse besitzt auch eine Methode <code><strong>add_friend()</strong></code>, um einem <code><strong>Person</strong></code> einen Freund hinzuzufügen. Ich habe auch eine Klasse <code><strong>Address</strong></code> definiert, die eine Strasse, eine Hausnummer, eine Stadt und eine Postleitzahl hat. Schliesslich habe ich eine Klasse <code><strong>Contact</strong></code> definiert, die eine Person, eine Adresse und eine Telefonnummer hat.</p><p id="ae2eea63-d3a7-49c1-b3ed-4b7342526cdb" class="">Dann habe ich zwei <code><strong>Person</strong></code> Objekte, zwei <code><strong>Address</strong></code> Objekte und zwei <code><strong>Contact</strong></code> Objekte erstellt.</p><p id="8039ed1f-2810-403d-a3a3-765a7c6b88ae" class="">Am Schluss habe ich die Objekte während der Laufzeit dynamisch bearbeitet, indem ich die Stadt einer Adresse geändert habe. Diese Änderung wurde automatisch in den <code><strong>Contact</strong></code> Objekten reflektiert, die diese Adresse verwenden.</p><pre id="34e63ebf-572a-477a-98f7-88b19697f17e" class="code"><code>class Person:
+    def __init__(self, name, birth_year):
+        self.name = name
+        self.birth_year = birth_year
+        self.friends = []
+
+    def add_friend(self, friend):
+        self.friends.append(friend)
+
+class Address:
+    def __init__(self, street, house_number, city, postal_code):
+        self.street = street
+        self.house_number = house_number
+        self.city = city
+        self.postal_code = postal_code
+
+class Contact:
+    def __init__(self, person, address, phone_number):
+        self.person = person
+        self.address = address
+        self.phone_number = phone_number
+
+person1 = Person(&quot;Nicko Jorgensson&quot;, 2000)
+person2 = Person(&quot;Marco Odermatt&quot;, 1999)
+address1 = Address(&quot;Bahnhofstrasse&quot;, &quot;12&quot;, &quot;Aarau&quot;, &quot;5000&quot;)
+address2 = Address(&quot;Hauptstrasse&quot;, &quot;111&quot;, &quot;Erlinsbach&quot;, &quot;5018&quot;)
+
+person1.add_friend(person2)
+person2.add_friend(person1)
+
+contact1 = Contact(person1, address1, &quot;0786564738&quot;)
+contact2 = Contact(person2, address2, &quot;0798847362&quot;)
+
+print(contact1.person.name, &quot;lives in&quot;, contact1.address.city)
+print(contact2.person.name, &quot;has friend&quot;, contact2.person.friends[0].name)
+
+contact2.address.city = &quot;Lenzburg&quot;
+contact2.address.postal_code = &quot;5100&quot;
+
+print(contact1.person.name, &quot;now lives in&quot;, contact1.address.postal_code, contact1.address.city)
+print(contact2.person.name, &quot;now lives in&quot;, contact2.address.postal_code, contact2.address.city)</code></pre><h2 id="61c0b499-026e-4388-85ec-7e1b1869d915" class="">1.6. Underscore Zeichen</h2><h3 id="a424c8d6-dc5a-46b6-92c9-9b16cac5f623" class="">1.6.1 _name</h3><p id="2ffbe67a-4858-4c2a-8eae-263d8be405b1" class="">In einer Klasse zeigen Namen mit einem führenden Unterstrich anderen Programmierern an, dass das Attribut oder die Methode nur innerhalb dieser Klasse verwendet werden sollte. Der Datenschutz wird jedoch nicht erzwungen. Wenn Funktionen in einem Modul mit einem führenden Unterstrich gekennzeichnet sind, bedeutet dies, dass sie nicht von einem anderen Ort importiert werden sollten.</p><h3 id="fd1355b7-70ee-453d-94b4-2ff79d0b73a7" class="">1.6.2 name_</h3><p id="43b66fe6-64db-4dc0-bca2-f2caf124aed3" class="">Manchmal ist der passendste Name für eine Variable bereits durch ein Schlüsselwort belegt. Daher können Namen wie <strong><code>class</code></strong> oder <strong><code>def</code></strong> in Python nicht als Namen einer Variable verwendet werden. In diesem Fall kann man einen einzelnen Unterstrich anhängen, um den Namenskonflikt zu lösen.</p><h3 id="4e927dcd-5d9f-4293-b985-16da3d3ee9c9" class="">1.6.3 __name</h3><p id="3349bc55-a12e-4cb1-b64b-cdb1c6f407b2" class="">Doppelte Unterstriche am Anfang einer Variable kennzeichnen “Name Mangling”. Der Name wird vom Interpreter verändert, um eine unbeabsichtigte Überschreibung in abgeleiteten Klassen zu vermeiden. Die Name der Variable wird um die Name der Klasse ergänzt. Zum Beispiel wird ein Attribut namens <code><strong>__name</strong></code> in einer Klasse namens <code><strong>MyClass</strong></code> in <code><strong>MyClass__name</strong></code> umbenannt.</p><h3 id="e899dc1c-9e73-4c0b-85d5-d2faf09d574b" class="">1.6.4 __<strong>name</strong>__</h3><p id="7c5512dd-3997-4828-9f2c-853ebde267ce" class="">Dies ist ein spezieller Name, der in Python für bestimmte Built-in-Variablen wie <code><strong>__name__</strong></code>, <code><strong>__doc__</strong></code>, <code><strong>__file__</strong></code> usw. verwendet wird. Diese Variablen sind Teil der Python-Sprachspezifikation und haben spezielle Verwendungen. Zum Beispiel enthält die <code><strong>__name__</strong></code> Variable den Namen des Moduls, in dem sie definiert ist, wenn sie als eigenständiges Skript ausgeführt wird.</p><h3 id="66909dd7-6c47-4898-9916-214639aff8f4" class="">1.6.5 <strong>Beispiel</strong></h3><p id="91e6ed47-776e-4f48-83fd-0345d5d9233f" class="">Beim zweiten Print erscheint eine Fehlermeldung weil t.__name durch Namensmanipulation nicht mehr existiert.</p><pre id="359fd70d-36d6-44df-b81e-cc4d8f5fdc13" class="code"><code>class Test(object):
+	def __init__(self):
+		self.__name = &quot;Bob&quot;
+		self._day = &quot;Tuesday&quot;
+
+t = Test()
+
+print(t._day)                   # Output: Tuesday
+print(t.__name)                 # Output: AttributeError: &#x27;Test&#x27; object has no attribute &#x27;__name&#x27;
+print(t._Test__name)            # Output: Bob</code></pre><h2 id="bdf1c12f-a146-4f4b-89b5-3bd01ea56b9e" class="">1.7 <strong><strong>Eine Aufgabe zum selber Ausprobieren: Die OO-Bank</strong></strong></h2><p id="85fb2aff-8308-45db-98f0-838c360ea63e" class=""><a href="https://spaces.technik.fhnw.ch/storage/uploads/mml/2022/04/03-Aufgabe-OO-Bank-1650999824.pdf">Aufgabenblatt</a></p><pre id="5afed462-b8e7-4c5a-b3a0-6dac68ac3364" class="code"><code>import uuid
+import datetime
+
+# Print list of tuples nicely
+def print_tuple_list(tup_list):
+    for tup in tup_list:
+        print(&#x27;\n&#x27;.join(str(x) for x in tup))
+        print(&quot;---&quot;)
+
+class Account():
+
+    # Constructor
+    def __init__(self, acc_type):
+        # Unique identifier with uuid
+        self._acc_number = uuid.uuid4()
+        self._acc_type = acc_type
+        self._balance = 0.0
+        self._transactions = []
+
+    @property
+    def acc_number(self):
+        return self._acc_number
+
+    @property
+    def balance(self):
+        return self._balance
+
+    @balance.setter
+    def balance(self, amount):
+        self._balance = amount
+
+    @property
+    def transactions(self):
+        return self._transactions
+
+    def check_balance(self):
+        return self._balance
+
+    def deposit(self, amount):
+        # Add amount to account balance
+        self.balance += amount
+        
+        # Add transaction to list with datetime
+        self.transactions.append((datetime.datetime.now().strftime(&#x27;%Y-%m-%d %H:%M:%S&#x27;), &quot;Deposit&quot;, amount))
+
+    
+    def withdraw(self, amount):
+        # Check if withdraw amount is more than balance
+        if amount &gt; self.balance:
+            return &quot;Insufficient funds&quot;
+        else:
+            # Subtract amount from account balance
+            self.balance -= amount
+
+            # Add transaction to list
+            self.transactions.append((datetime.datetime.now().strftime(&#x27;%Y-%m-%d %H:%M:%S&#x27;), &quot;Withdraw&quot;, -amount))
+
+    # transfer money from one account to another
+    def transfer(self, amount, transfer_account, reference = &quot;&quot;):
+
+        # Check if withdraw amount is more than balance
+        if amount &gt; self.balance:
+            print(&quot;Insufficient funds&quot;)
+            return False
+        else:
+            self.balance -= amount
+            transfer_account.balance += amount
+
+            # Add transaction to list
+            self.transactions.append((datetime.datetime.now().strftime(&#x27;%Y-%m-%d %H:%M:%S&#x27;), &quot;Transfer&quot;, -amount, transfer_account.acc_number, reference))
+
+            print(&quot;Transfer successful&quot;)
+
+            return True
+        
+   # get the last n transactions
+    def get_transactions(self, n = 10):
+        return self.transactions[-n:]
+    
+    # close account if balance is 0
+    def close(self):
+        if self.balance == 0:
+            print(&quot;Account will be closed.&quot;)
+            return True
+        else:
+            print(&quot;Account can&#x27;t be closed. Balance is not 0.&quot;)
+            return False
+
+    
+class Bank():
+    
+    # Constructor
+    def __init__(self):
+        self._accounts = {}
+        self._transactions = []
+
+    @property
+    def accounts(self):
+        return self._accounts
+
+    def open_account(self, acc_type):
+        new_account = Account(acc_type)
+
+        # Add account to dictionary
+        self.accounts[new_account.acc_number] = new_account
+
+        return new_account.acc_number
+
+    def close_account(self, acc_number):
+        account = self.find_account(acc_number)
+        if isinstance(account, Account) and account.close():
+            self.accounts.pop(acc_number)
+            print(&quot;Account closed successfully.&quot;)
+        else:
+            print(&quot;Account closing failed.&quot;)
+    
+    def find_account(self, acc_number):
+        if acc_number not in self.accounts:
+            return &quot;Account not found&quot; 
+        else:
+            return self.accounts[acc_number]
+        
+    def transfer(self, debit_acc_number, credit_acc_number, amount, reference = &quot;&quot;):
+        debit_acc = self.find_account(debit_acc_number)
+        credit_acc = self.find_account(credit_acc_number)
+
+        if isinstance(debit_acc, Account) and isinstance(credit_acc, Account):
+            if debit_acc.transfer(amount, credit_acc, reference):
+                self._transactions.append((datetime.datetime.now().strftime(&#x27;%Y-%m-%d %H:%M:%S&#x27;), &quot;Transfer&quot;, -amount, debit_acc.acc_number, credit_acc.acc_number, reference))
+                return True
+            else:
+                return False
+        else:
+            print(&quot;Transfer failed.&quot;)
+            return False
+
+
+bank = Bank()
+
+# 1. Open accounts
+acc1 = bank.open_account(&quot;Spendings&quot;)
+acc2 = bank.open_account(&quot;Savings&quot;)
+
+# 2. Deposit money
+bank.find_account(acc1).deposit(1000)
+bank.find_account(acc2).deposit(5000)
+
+# 3. Transfer money
+bank.transfer(acc1, acc2, 2000, &quot;Taxes&quot;) # insufficient funds
+bank.transfer(acc1, acc2, 500, &quot;Rent&quot;) # successful
+bank.transfer(acc2, acc1, 1500, &quot;Vacation&quot;) # successful
+
+# 4. Check balance
+print(bank.find_account(acc1).check_balance())
+print(bank.find_account(acc2).check_balance())
+
+# 5. Get last 2 transactions
+print_tuple_list(bank.find_account(acc1).get_transactions(2))
+
+# 6. Get last 2 transactions from bank
+print_tuple_list(bank.find_account(acc2).get_transactions(2))
+
+# 7. Close account
+bank.close_account(acc1)
+
+# Show balance 
+print(bank.find_account(acc1).check_balance())
+
+# Output:
+Insufficient funds
+Transfer successful
+Transfer successful
+2000.0
+4000.0
+2023-06-20 13:52:29
+Deposit
+1000
+---
+2023-06-20 13:52:29
+Transfer
+-500
+c12248eb-a730-4349-8369-10c7c76ddd37
+Rent
+---
+2023-06-20 13:52:29
+Deposit
+5000
+---
+2023-06-20 13:52:29
+Transfer
+-1500
+7c2b8bd1-ca5d-4cbb-97b4-186ea2bf4b5b
+Vacation
+---
+Account can&#x27;t be closed. Balance is not 0.
+Account closing failed.
+2000.0</code></pre><h1 id="3e2026a7-f166-439e-91ef-99e118d26301" class="">2. <strong><strong>Funktionale Programmierung</strong></strong></h1><p id="ad7d6ef2-6f30-4e55-957c-86198f4bc89b" class="">Die Prinzipien der funktionalen Programmierung sind:</p><ol type="1" id="08d00b18-9c9a-45aa-bae6-f7408b0d773b" class="numbered-list" start="1"><li><strong>Immutability (Unveränderlichkeit):</strong> Daten sollten nicht verändert werden können, um unerwartete Seiteneffekte zu vermeiden.</li></ol><ol type="1" id="fa22d424-8328-4878-9ce6-e10ded3928f7" class="numbered-list" start="2"><li><strong>Pure Functions (Reine Funktionen):</strong> Funktionen sollten keine Nebeneffekte haben und immer das gleiche Ergebnis zurückgeben, wenn sie mit denselben Argumenten aufgerufen werden.</li></ol><ol type="1" id="b3f0b91f-daaa-4eef-888d-6308051a7a1d" class="numbered-list" start="3"><li><strong>Higher-Order Functions (Höhere Funktionen):</strong> Funktionen sollten als Argumente an andere Funktionen übergeben oder als Rückgabewerte aus anderen Funktionen zurückgegeben werden können.</li></ol><ol type="1" id="f29240a5-af41-4c25-92b5-1c3d5e12ac51" class="numbered-list" start="4"><li><strong>Recursion (Rekursion):</strong> Funktionen sollten sich selbst aufrufen können, um komplexere Berechnungen durchzuführen.</li></ol><ol type="1" id="a3e7c289-6b18-423a-b76f-ba3921476400" class="numbered-list" start="5"><li><strong>Referential Transparency (Referenzielle Transparenz):</strong> Ein Ausdruck sollte immer durch seinen Wert ersetzt werden können, ohne das Ergebnis zu verändern.</li></ol><ol type="1" id="fc5c5c05-5d7f-4128-8184-11bea84ca08f" class="numbered-list" start="6"><li><strong>Lazy Evaluation (Verzögerte Auswertung):</strong> Ausdrücke sollten nur dann ausgewertet werden, wenn sie benötigt werden, um Ressourcen zu sparen.</li></ol><p id="42281c77-a368-4c9e-92e5-942b37dd8bc3" class="">Die Verwendung dieser Prinzipien in der funktionalen Programmierung führt zu klar verständlichem, wartbarem und fehlerfreiem Code.</p><h2 id="b202dd11-bbe7-4d11-a62d-457b43ce529d" class="">2.1 Einführung</h2><p id="7b6045f1-480f-4849-9554-0aa1d20bf42f" class="">Ziel ist es das Einführungsvideo anzuschauen und die folgende kleinen Übungsaufgaben als Einstieg mit den Umgang mit Funktionen zu lösen.</p><p id="121ebfcf-8f42-4b4a-9f79-a5438632a55d" class=""><a href="https://www.youtube.com/watch?v=YZIUPOGx_ts">Video Link</a></p><h3 id="4f23910a-34bb-4e74-92ec-6b2015c4b4a9" class=""><strong>2.1.1 Funktionen höher Ordnung</strong></h3><p id="9d0ad875-0349-40ee-8780-4021a9fdb43f" class="">In der funktionalen Programmierung beziehen sich Funktionen höherer Ordnung auf Funktionen, die als Argumente an andere Funktionen übergeben oder als Rückgabewert von Funktionen zurückgegeben werden können. In Python gibt es verschiedene Arten von Funktionen höherer Ordnung:</p><ol type="1" id="0f72940d-aba0-48b7-9818-cf262b0cc17c" class="numbered-list" start="1"><li><mark class="highlight-blue"><code><strong>map</strong></code></mark>: Die Funktion <mark class="highlight-blue"><code><strong>map</strong></code></mark> nimmt eine Funktion und eine Iterable als Argumente (z.B. lambda x: x**2, [2, 3]) und wendet die Funktion auf jedes Element des Iterable an. Die Funktion <mark class="highlight-blue"><code><strong>map</strong></code></mark> gibt ein neues Iterable zurück, das die Ergebnisse der Anwendung der Funktion auf jedes Element enthält.</li></ol><ol type="1" id="93ea80aa-0970-4ce4-936a-4564c8916430" class="numbered-list" start="2"><li><mark class="highlight-blue"><code><strong>filter</strong></code></mark>: Die Funktion <mark class="highlight-blue"><code><strong>filter</strong></code></mark> nimmt eine Funktion und ein Iterable als Argumente und gibt ein neues Iterable zurück, das nur die Elemente des ursprünglichen Iterable enthält, für die die Funktion <mark class="highlight-blue"><code><strong>True</strong></code></mark> zurückgibt.</li></ol><ol type="1" id="2eeeef9c-5d44-49a6-8203-146a9a8399bf" class="numbered-list" start="3"><li><mark class="highlight-blue"><code><strong>reduce</strong></code></mark>: Die Funktion <mark class="highlight-blue"><code><strong>reduce</strong></code></mark> nimmt eine Funktion und ein Iterable als Argumente und gibt einen einzelnen Wert zurück, der das Ergebnis der Anwendung der Funktion auf jedes Element des Iterable ist.</li></ol><ol type="1" id="81a45545-da1f-4be2-8687-3b0e0baca0dd" class="numbered-list" start="4"><li><mark class="highlight-blue"><code><strong>curry</strong></code></mark>: Die Funktion <mark class="highlight-blue"><code><strong>curry</strong></code></mark> nimmt eine Funktion als Argument und gibt eine neue Funktion zurück, die ein oder mehrere Argumente erwartet und die ursprüngliche Funktion auf diese Argumente anwendet. Wenn die Anzahl der Argumente nicht ausreicht, um die ursprüngliche Funktion aufzurufen, gibt die neue Funktion eine teilweise angewandte Funktion zurück, die auf zusätzliche Argumente wartet.</li></ol><h3 id="0b5165be-6f3c-4381-bc39-7a032aa32b7d" class="">2.1.2 Aufgabe 1</h3><p id="880786c2-1b04-41ae-bee9-53aacdfc511f" class="">Ziel ist es eine Funktion zu schreiben, welche anhand einer Liste die Anzahl gerade Zahlen zurückgibt. Es müssen die beiden Funktionen von der Python Bibliothek <code><mark class="highlight-blue"><strong>functools</strong></mark></code> verwendet werden: <mark class="highlight-blue"><code><strong>reduce</strong></code></mark> und <mark class="highlight-blue"><code><strong>filter</strong></code></mark></p><pre id="7c5347c3-ecd2-4788-9c69-fd5e5b09025b" class="code"><code>from functools import *
+
+def anzahl_gerade(numbers):
+    count = reduce(lambda x, y: x + 1, filter(lambda x: x % 2 == 0, numbers), 0)
+    return count
+
+print(anzahl_gerade([1,2,3,4,5,6,7,8,9]))        # Output: 4</code></pre><p id="18f50c7e-6577-4a5d-a068-ce5445e003a4" class="">Im Code verwende ich <mark class="highlight-blue"><code><strong>filter</strong></code></mark>, um nur gerade Zahlen aus der Liste zu filtern. Dann wird <mark class="highlight-blue"><code><strong>reduce</strong></code></mark> verwendet, um die Anzahl der gerade Zahlen zu zählen. Wir beginnen mit einem Startwert von 0 und verwenden die Lambda-Funktion <mark class="highlight-blue"><code><strong>lambda x, y: x + 1</strong></code></mark>, um jedes Mal, wenn eine gerade Zahl gefunden wird, den Zähler um 1 zu erhöhen. Am Ende gibt die Funktion die Gesamtzahl der geraden Zahlen zurück (4) aus der mitgegebenen Liste von Zahlen 1-9.</p><h3 id="870a574f-c7ff-4c41-928b-3ab82d8a90c9" class="">2.1.3 Aufgabe 2</h3><p id="7beffde4-fce3-4b8f-8c9d-0d526618ef47" class="">Ziel ist es, eine Funktion zu schreiben, die aus Funktionen mit beliebig vielen Parametern eine neue macht, deren erster Parameter fixiert ist.</p><pre id="61d4b530-b6df-4c17-9be8-e5ef2ac3acda" class="code"><code>def curry(func, fixed_arg):
+    def curried(*args):
+        return func(fixed_arg, *args)
+    return curried</code></pre><p id="c45f921f-84f5-41e6-bfb0-f455a0a1d156" class="">Die Funktion <mark class="highlight-blue"><code><strong>curry</strong></code></mark> erhält als Eingabe eine Funktion <mark class="highlight-blue"><code><strong>func</strong></code></mark> und einen fixen Wert <mark class="highlight-blue"><code><strong>fixed_arg</strong></code></mark> für den ersten Parameter von <mark class="highlight-blue"><code><strong>func</strong></code></mark> und gibt eine neue Funktion <mark class="highlight-blue"><code><strong>curried</strong></code></mark> zurück, die den ersten Parameter von <mark class="highlight-blue"><code><strong>func</strong></code></mark> fixiert hat.</p><p id="6aad8bfc-1525-492a-adbf-dcf888d41d8b" class="">Die neue Funktion <mark class="highlight-blue"><code><strong>curried</strong></code></mark> nimmt eine variable Anzahl von Argumenten entgegen (<mark class="highlight-blue"><code><strong>*args</strong></code></mark>) und gibt das Ergebnis von <mark class="highlight-blue"><code><strong>func(fixed_arg, *args)</strong></code></mark> zurück, wobei <mark class="highlight-blue"><code><strong>fixed_arg</strong></code></mark> als erster Parameter übergeben wird und die restlichen Argumente in <mark class="highlight-blue"><code><strong>*args</strong></code></mark> enthalten sind.</p><pre id="a3c1e6be-1294-478f-aaa1-3d11f05eb12a" class="code"><code>def add(a: int, b: int, c: int):
+    return a + b + c
+
+bar = curry(add, 2)
+print(bar(1, 3))                    # Output: 6</code></pre><p id="a93b7038-e25a-452e-b2fa-2fe3a8dd9475" class="">In diesem Beispiel habe ich die <mark class="highlight-blue"><code><strong>add</strong></code></mark> Funktion definiert, die drei Argumente erwartet und sie zusammen addiert. Dann wird die <mark class="highlight-blue"><code><strong>curry</strong></code></mark> Funktion verwendet, um eine neue Funktion <mark class="highlight-blue"><code><strong>bar</strong></code></mark> zu erstellen, die das erste Argument von <mark class="highlight-blue"><code><strong>add</strong></code></mark> auf den Wert 2 fixiert hat. Danach wird die neue Funktion <mark class="highlight-blue"><code><strong>bar</strong></code></mark> mit den verbleibenden Argumenten aufgerufen, um das Endergebnis zu erhalten. Der Output lautet 6, was dem Ergebnis von 2 + 1 + 3 entspricht.</p><h3 id="fd5926f9-b253-452b-aba4-597c8ab292e1" class="">2.1.4 Aufgabe 3</h3><p id="c7f26cbd-37df-4101-b6c6-81151f48c9d9" class="">Ziel der letzten Aufgabe des Einführungsvideos war es, eine Funktion <code><mark class="highlight-blue"><strong>mein_filter</strong></mark></code> zu schreiben, die nur mit <mark class="highlight-blue"><code><strong>reduce</strong></code></mark> alle Nummern in einer Liste ausgibt, welche der angegebenen Funktion zutreffen (hier: x &gt; 3)</p><pre id="0b4755c4-2aa4-42a0-8e0f-97b70e2b1890" class="code"><code>def mein_filter(func, numbers):
+    return reduce(lambda acc, x: acc + [x] if func(x) else acc, numbers, [])
+
+print(mein_filter(lambda x: x &gt; 3, [1, 2, 3, 4, 5, 6, 7, 8, 9])) # Output: [4, 5, 6, 7, 8, 9]</code></pre><p id="d8fab915-c230-406a-9972-9437dd7797a4" class="">In diesem Fall ist die Funktion, die an <mark class="highlight-blue"><code><strong>reduce</strong></code></mark> übergeben wird, eine Lambda-Funktion, die zwei Argumente annimmt: <mark class="highlight-blue"><code><strong>acc</strong></code></mark> und <mark class="highlight-blue"><code><strong>x</strong></code></mark>. <mark class="highlight-blue"><code><strong>acc</strong></code></mark> ist die kumulative Liste der Elemente, die die gegebene Funktion erfüllen, und <mark class="highlight-blue"><code><strong>x</strong></code></mark> ist das aktuelle Element der Iteration. Wenn die gegebene Funktion <mark class="highlight-blue"><code><strong>True</strong></code></mark> für <mark class="highlight-blue"><code><strong>x</strong></code></mark> zurückgibt, fügt die Lambda-Funktion <mark class="highlight-blue"><code><strong>x</strong></code></mark> zur kumulativen Liste hinzu, indem sie <mark class="highlight-blue"><code><strong>acc + [x]</strong></code></mark> zurückgibt. Andernfalls gibt die Lambda-Funktion <mark class="highlight-blue"><code><strong>acc</strong></code></mark> zurück, ohne <mark class="highlight-blue"><code><strong>x</strong></code></mark> hinzuzufügen.</p><h2 id="e23195b2-246a-43da-82b3-2fcd47000d4c" class="">2.2 Video Serie: <strong><strong>Functional Programming in Python</strong></strong></h2><p id="3eee5d5b-6676-4b52-b3c6-010a98094807" class=""><a href="https://realpython.com/courses/functional-programming-python/">Real Python - Functional Programming Python</a></p><h3 id="a3989371-f1bc-4712-980b-b7956ab29a1d" class="">2.2.1 <strong>Section 1: Immutable Data Structures</strong></h3><p id="2e410d7e-e09b-4154-a62d-f321c24ba315" class=""><strong>What is Functional Programming?</strong></p><ul id="92ca65a4-c646-4781-8153-041c0be55ad6" class="bulleted-list"><li style="list-style-type:disc">It’s a programming technique that avoids side effects in your programs by performing computation, mainly through the evaluation of functions.</li></ul><ul id="f7b033f2-228c-485e-b554-501241b547f4" class="bulleted-list"><li style="list-style-type:disc">Reduce the likelihood of bugs</li></ul><ul id="328f4f38-63ad-4474-8f41-0eea834778d0" class="bulleted-list"><li style="list-style-type:disc">We mainly use immutable data structures</li></ul><p id="eff98a22-e9bb-40eb-b600-eda0a62bd4af" class="">
+</p><p id="e388b098-a27b-4d1c-af48-02f2178dcd63" class=""><strong>Mutable Data Structures: Lists and Dictionaries</strong></p><pre id="d1f402d7-c065-47bc-b699-5f74c76c33c2" class="code"><code>scientists = [
+    {&#x27;name&#x27;: &#x27;Ada Lovelace&#x27;, &#x27;field&#x27;: &#x27;math&#x27;, &#x27;born&#x27;: 1815, &#x27;nobel&#x27;: False},
+    {&#x27;name&#x27;: &#x27;Emmy Noether&#x27;, &#x27;field&#x27;: &#x27;math&#x27;, &#x27;born&#x27;: 1882, &#x27;nobel&#x27;: False}
+]
+
+# mutable data structure - We can just rename names - example: Ada to Ed
+scientists[0][&#x27;name&#x27;] = &#x27;Ed Lovelace&#x27;</code></pre><p id="6d564371-fca9-4472-b1b8-e554d46886d3" class="">Guter Kommentar von <strong>molecule61</strong> on <a href="https://realpython.com/lessons/mutable-data-structures-lists-dictionaries/#comment-3c28c0ba-57bd-4001-ac13-c5687ed430f9">April 19, 2020</a></p><blockquote id="7e245d81-aa72-4f99-b8da-85fd5ab5f470" class="">The reason you want to use immutable data structures is not that “you run the risk of messing up your data set, since it can be changed”, but that it lets you write code that works through side effects. Also, it’s hazardous to pass mutable data structures to other parts of your program, since changes made through one reference to that data can then affect otherwise unrelated parts of your code. I’m sure you can communicate those reasons better than I can. But, one way or the other, accidentally “messing up” your data is just a wierd thing to suggest people worry about.</blockquote><p id="44c8c99c-2e60-4fc0-9de7-cb734d0b7e8e" class="">
+</p><p id="c8709f41-b02d-4e09-93d2-757a954778b6" class=""><strong>namedtuple</strong></p><ul id="8c22b9c7-d6e6-4fc2-9e7f-22d42e163606" class="bulleted-list"><li style="list-style-type:disc">immutable data structure</li></ul><pre id="ebf85fdd-1b7b-4425-9e40-5ed99ae1348b" class="code"><code>import collections
+Scientist = collections.namedtuple(&#x27;Scientist&#x27;, [
+    &#x27;name&#x27;,
+    &#x27;field&#x27;,
+    &#x27;born&#x27;,
+    &#x27;nobel&#x27;,
+])
+
+# Create Scientist object
+ada = Scientist(name=&#x27;Ada Lovelace&#x27;, field=&#x27;math&#x27;, born=1815, nobel=False)
+
+# Reach into the object
+print(ada.name)
+
+print(ada.field)
+
+# immutable data structure - We can&#x27;t rename names; example: Ada
+ada.name = &#x27;Ed Lovelace&#x27; # Error: AttributeError: can&#x27;t set attribute
+
+# Output:
+Ada Lovelace
+math
+Traceback (most recent call last):
+  File &quot;/Users/alexanderschilling/Documents/GitHub/ofp/2.2_functional_programming.py&quot;, line 26, in &lt;module&gt;
+    ada.name = &#x27;Ed Lovelace&#x27; # Error: AttributeError: can&#x27;t set attribute
+AttributeError: can&#x27;t set attribute</code></pre><p id="c80f4f99-fdd2-4b49-be2a-ad6a8b54e7b6" class="">
+</p><p id="9b872d99-5d5a-4b79-b4b4-2c4a73b28e53" class=""><strong><strong>Danger Zone: Mixing Mutable and Immutable Data Structures</strong></strong></p><pre id="4ffba589-c5d0-4a34-8802-19bca97e8245" class="code"><code># Mixing data structures
+scientists = [
+    Scientist(name=&#x27;Ada Lovelace&#x27;, field=&#x27;math&#x27;, born=1815, nobel=False),
+    Scientist(name=&#x27;Emmy Noether&#x27;, field=&#x27;math&#x27;, born=1882, nobel=False),
+]
+
+# immmutable data structure - We can just rename names; example: Ada
+#scientists[0].name = &#x27;Ed Lovelace&#x27;
+
+# mutable data structure - We can delete scientists from the list
+del scientists[0]
+
+print(scientists)
+
+# Output: 
+[Scientist(name=&#x27;Emmy Noether&#x27;, field=&#x27;math&#x27;, born=1882, nobel=False)]</code></pre><p id="d7fe49ea-56d4-41c9-987a-f2cb0cfe36bf" class="">
+</p><p id="d5701c13-0d14-46ea-a967-dfac3f67ac91" class=""><strong>tuples</strong></p><pre id="9a441d4c-cf4d-4c40-99d4-eda025491522" class="code"><code>scientists = (
+    Scientist(name=&#x27;Ada Lovelace&#x27;, field=&#x27;math&#x27;, born=1815, nobel=False),
+    Scientist(name=&#x27;Emmy Noether&#x27;, field=&#x27;math&#x27;, born=1882, nobel=False),
+    Scientist(name=&#x27;Marie Curie&#x27;, field=&#x27;physics&#x27;, born=1867, nobel=True),
+    Scientist(name=&#x27;Tu Youyou&#x27;, field=&#x27;chemistry&#x27;, born=1930, nobel=True),
+    Scientist(name=&#x27;Ada Yonath&#x27;, field=&#x27;chemistry&#x27;, born=1939, nobel=True),
+    Scientist(name=&#x27;Vera Rubin&#x27;, field=&#x27;astronomy&#x27;, born=1928, nobel=False),
+    Scientist(name=&#x27;Sally Ride&#x27;, field=&#x27;physics&#x27;, born=1951, nobel=False),
+)
+
+# can&#x27;t delete scientists from the tuple
+#del scientists[0]
+
+# cant add scientists to the tuple
+# scientists.append(Scientist(name=&#x27;Sally Ride&#x27;, field=&#x27;physics&#x27;, born=1951, nobel=False))</code></pre><ul id="6a3fe014-995a-4615-ba97-28366961986a" class="bulleted-list"><li style="list-style-type:disc">This is now an immutable array of these Scientist objects that are immutable, themselves, so the whole thing is immutable. In a perfect world, this is where you want to be if you’re doing any kind of functional programming in Python. </li></ul><ul id="b8dbe739-c6bc-4ae7-961b-cf9fd8617edc" class="bulleted-list"><li style="list-style-type:disc">You want to start with a solid data structure that ideally is immutable.</li></ul><ul id="e4635bba-e5e1-400e-84dd-2183e9115ae0" class="bulleted-list"><li style="list-style-type:disc">big benefit for thinking about how you can keep your data structures immutable for functional programming</li></ul><p id="c8b0b365-9766-4720-a130-7ba7dbdaa870" class="">
+</p><p id="443d63d4-5a29-4da8-a190-40af5347c2c8" class="">Für die nächsten Kapiteln muss man leider zahlen :(</p><h3 id="80060b02-0106-4306-a923-15a252848c00" class="">🔒 2.2.2 <strong><strong>Section 2: The filter() Function</strong></strong></h3><h3 id="9e058dad-492e-44e3-b646-e3add7daf562" class="">🔒 2.2.3 <strong><strong>Section 3: The map() Function</strong></strong></h3><h3 id="a2d3416e-dbbb-4302-9293-dccb6139586c" class="">🔒 2.2.4 <strong><strong>Section 4: The reduce() Function</strong></strong></h3><h3 id="94d55970-0006-49e0-98e1-84c612359564" class="">🔒 2.2.5 <strong><strong>Section 5: Parallel Processing With multiprocessing</strong></strong></h3><h3 id="1912da10-3400-4aea-9c95-7757ebb46233" class="">🔒 2.2.6 <strong><strong>Section 6: Parallel Processing With concurrent.futures</strong></strong></h3><h2 id="a0f37275-0aef-4b3a-aa6d-33112cb9a1e2" class="">2.3 Python Dokumentation</h2><p id="6149e7ad-a7b7-4b5b-b2a9-bb7bdf4de984" class=""><a href="https://docs.python.org/3/howto/functional.html">Docs Python - Functional</a></p><h2 id="6ecf6693-d9a1-46fb-baf1-541ec1a6e0ee" class="">2.4 Video Einführung</h2><h3 id="8d5bf3a4-00f0-4f45-9c1e-abdd5a8c854b" class="">2.4.1 Python Functions (vor allem eine Rekapitulation der grundlegenden Mechanismen)</h3><p id="c35eedd8-6b7c-4164-ae41-c17849cf99e6" class=""><a href="https://youtu.be/NE97ylAnrz4">Python Functions</a></p><h3 id="0efc4df4-9ca5-47f4-849b-0382de126464" class="">2.4.2 Lambda Expressions &amp; Anonymous Functions (vor allem eine Notationsvereinfachung)</h3><p id="b65ccb18-f5a2-41ac-8c5a-a7c06bc0601b" class=""><a href="https://youtu.be/25ovCm9jKfA">Lambda Expressions &amp; Anonymous Functions</a> </p><h3 id="d20f9189-4657-4dd4-bccb-7d500da6b63e" class="">2.4.3 Map, Filter and Reduce Functions (die wichtigsten Funktionen höherer Ordnung in Python)</h3><p id="4e6a2e24-c82d-4510-a5b5-5571e304d65a" class=""><a href="https://youtu.be/hUes6y2b--0">Map, Filter, and Reduce Functions</a> </p><h3 id="c9cb4aea-570c-4ce6-84e1-19755f1d8df9" class="">2.4.4 Iterators, Iterables, and Itertools in Python (die grundlegende Python-Struktur für lazy evaluation)</h3><p id="b1ec31e1-b66e-48ec-b97b-e704ac09a465" class=""><a href="https://youtu.be/WR7mO_jYN9g">Iterators, Iterables, and Itertools in Python</a></p><h3 id="20223837-1601-41f3-83cf-ae0e84966982" class="">2.4.5 Generators in Python (ein spezieller Weg zur Erzeugung von Iteratoren)</h3><p id="e26435e6-2641-4cb6-ad7f-3d079ce3d351" class=""><a href="https://youtu.be/gMompY5MyPg">Generators in Python</a></p><p id="e9b458d2-2772-4245-b42a-39176ae45250" class="">
+</p><h2 id="8bbb3851-92f4-4846-807c-2d15157bdac2" class="">2.5 <strong>Funktionales Programmieren mit Fibonacci-Zahlen</strong></h2><p id="8c0a5388-b04c-4fcb-b751-0adea9a9161e" class=""><a href="https://spaces.technik.fhnw.ch/storage/uploads/spaces/73/exercises/02-Fibonacci-Funktionen-1678376087.pdf">Aufgabenblatt</a></p><h3 id="53ce1990-74ea-4774-9774-04e651985fb8" class="">2.5.1 Einleitung</h3><p id="0cf986a7-7ef6-4021-85fc-23327321a7b0" class="">Die Fibonacci-Folge ist eine berühmte Folge von Zahlen, die durch die Summe der beiden vorherigen Zahlen in der Folge definiert ist. Zum Beispiel ist die Fibonacci-Folge bis zum 10. Element wie folgt:</p><pre id="55cc3ff6-ae17-4670-a14a-1171f2f5d56e" class="code code-wrap"><code>0, 1, 1, 2, 3, 5, 8, 13, 21, 34</code></pre><p id="199999b0-43a9-427b-a493-7b1f88ee67f2" class="">Die mathematische Definition legt nahe, die Berechnung von Fibonacci-Zahlen als rekursive Funktion zu programmieren:</p><pre id="ec2c89e4-b228-4e3c-a7ea-3d27824e0a9e" class="code code-wrap"><code>def fibonacci_rec(n: int) -&gt; int:
+	return n if n &lt;= 1 else fibonacci_rec(n - 1) + fibonacci_rec(n - 2)</code></pre><p id="4ce895dc-31c4-4b0f-b903-960c5b391199" class="">Aber ist das auch schlau? Probiere das Programm mit verschiedenen Argumenten für n aus. Aber vorsicht: Die Rechenzeit steigt rasch an.</p><pre id="0b14b231-42bf-4618-82ee-ee62e89490ff" class="code"><code>import timeit
+
+def fibonacci_rec(n: int) -&gt; int:
+	return n if n &lt;= 1 else fibonacci_rec(n - 1) + fibonacci_rec(n - 2)
+
+n_list = [10,20,25]
+
+for n in n_list:
+    start_time = timeit.default_timer()
+		print(&quot;Fibonacci: &quot;, fibonacci_rec(n))    
+		end_time = timeit.default_timer()
+    print(&quot;Rechenzeit: {} Sekunden&quot;.format(round(end_time - start_time,5)))
+
+# Output:
+Fibonacci:  55
+Rechenzeit: 5e-05 Sekunden
+Fibonacci:  6765
+Rechenzeit: 0.00248 Sekunden
+Fibonacci:  75025
+Rechenzeit: 0.02622 Sekunden</code></pre><p id="3e10da84-9d66-4e25-a975-67b6e1b9c6c9" class="">Das Problem ist, dass die Funktion sehr ineffizient ist, weil die gleichen Fibonacci-Zahlen mehrfach berechnet werden, was zu einer <strong>exponentiellen Laufzeit</strong> führt. Um eine Vorstellung zu bekommen, wie oft die Funktion fibonacci_rec (rekursiv) aufgrufen wird, kannman einen Zähler einbauen:</p><pre id="8b8836b7-4577-46f6-83c2-829ab7d7acd1" class="code"><code>cnt = 0
+
+def fibonacci_rec_cnt(n: int) -&gt; int:
+    global cnt
+    cnt += 1
+    return n if n &lt;= 1 else fibonacci_rec_cnt(n - 1) + fibonacci_rec_cnt(n - 2)
+
+n_list = [10,20,25]
+
+for n in n_list:
+    print(&quot;Anzahl n, Fibonacci, Count: &quot;, n, fibonacci_rec_cnt(n), cnt)
+
+# Output:
+Anzahl n, Fibonacci, Count:  10 55 177
+Anzahl n, Fibonacci, Count:  20 6765 22068
+Anzahl n, Fibonacci, Count:  25 75025 264853</code></pre><h3 id="92273099-1776-492a-9cec-157cbc681d2f" class="">2.5.2 Aufgaben mit rekursiven Fibonacci-Funktionen</h3><p id="e2912b76-8279-4359-b7ff-4896a1a26575" class=""><strong>Aufgabe 1</strong></p><p id="3c78d31f-de7b-4d31-b6a8-b57ed1aa67bc" class="">Ein Prinzip der Funktionalen Programmierung ist Immutability (Unveränderlichkeit).</p><p id="5736fb57-7d5f-4050-9a83-88fcad2b2693" class="">Eine <mark class="highlight-blue"><code><strong>global</strong></code></mark>-Anweisung in Python wird verwendet, um eine globale Variable zu modifizieren. Eine globale Variable ist eine Variable, die ausserhalb einer Funktion definiert ist und von überall im Code zugegriffen und verändert werden kann. </p><p id="c1ea166d-5e22-402f-a058-b7c882c6e4b6" class="">In diesem Beispiel wird der globale Zähler <mark class="highlight-blue"><code><strong>cnt</strong></code></mark> in der Funktion <mark class="highlight-blue"><code><strong>fibonacci_rec_cnt(n)</strong></code></mark> verwendet und verändert. Das bricht das Prinzip der funktionalen Programmierung, weil die Funktion nun den Zustand der globalen Variable verändert hat. Das führt dazu, dass die Funktion nicht mehr <em>pure</em> ist, da sie bei gleichen Eingaben unterschiedliche Ausgaben liefern kann.</p><p id="cd5a71ab-bbf0-4d67-a8f2-9164cb060bce" class="">Eine Funktion, die keine <mark class="highlight-blue"><code><strong>global</strong></code></mark>-Anweisung enthält, hat die Eigenschaft, dass sie eher den Prinzipien der funktionalen Programmierung folgt. Sie ist eher <em>pure</em>, weil sie wahrscheinlich keinen Zustand verändert. Solche Funktionen sind leichter zu verstehen, zu testen und vorherzusagen, da ihr Verhalten nur von ihren Eingaben abhängt und sie nichts ausserhalb ihrer eigenen Ausführung beeinflussen.</p><p id="446df992-9cd6-4fc6-8d66-b6f541910e7f" class=""><strong>Aufgabe 2</strong></p><p id="0f76025a-8329-4009-9418-c8e544c0f032" class="">Die Funktion mit diesem Zähler ist nicht pure. Kannst Du diese Funktion so programmieren, dass sie im Sinne der funktionalen Programmierung pure ist? (Tipp: Funktionswerte können mehr als eine Zahl umfassen!)</p><pre id="83e918ae-4268-400f-99fa-d50f1b834554" class="code"><code>def fibonacci_rec_cnt_new(n: int) -&gt; (int, int):
+    if n &lt;= 1:
+        return n, 1
+    else:
+        fib1, cnt1 = fibonacci_rec_cnt_new(n - 1)
+        fib2, cnt2 = fibonacci_rec_cnt_new(n - 2)
+        return fib1 + fib2, cnt1 + cnt2 + 1
+
+n_list = [10,20]
+
+for n in n_list:
+    fib, cnt = fibonacci_rec_cnt_new(n)
+    print(fib, cnt)
+
+55 177
+6765 21891</code></pre><p id="2a508376-4d4e-4387-90b7-fade5e375551" class="">
+</p><p id="da9a20fd-f1fd-4cff-9761-71f2cc9480af" class=""><strong>Aufgabe 3</strong></p><p id="a77fff38-c54c-4104-a7c7-2ea4beccb14a" class="">Die Aufgabe besteht darin, die Funktion <mark class="highlight-blue"><strong><code>fibonacci_rec</code></strong></mark> aus der vorherigen Textpassage mithilfe eines Dictionaries zu optimieren. Das Ziel ist es, die bereits berechneten Funktionswerte zu speichern und nur bei Bedarf zu berechnen. Wenn die Parameter bereits im Dictionary vorhanden sind, wird der gespeicherte Funktionswert zurückgegeben. Die Funktion sollte weiterhin als <em>pure</em> betrachtet werden können, obwohl sie ein Dictionary verwendet, da das Dictionary nur als technische Unterstützung für die Effizienzsteigerung dient.</p><pre id="0e96e809-fa44-4bdf-95d6-ad8701cb35ee" class="code"><code>import timeit
+
+def fibonacci_rec(n: int, memo: dict = {}) -&gt; int:
+    # Prüft, ob das Ergebnis bereits im Dictionary gespeichert ist
+    if n in memo: 
+        # Wenn ja, gibt das gespeicherte Ergebnis zurück
+        return memo[n]
+     # Wenn n 0 oder 1 ist, ist das Ergebnis n selbst
+    elif n &lt;= 1:
+        result = n
+    else:  
+        # Wenn n grösser als 1 ist, berechnet das Ergebnis als Summe der beiden vorherigen Fibonacci-Zahlen.
+        fib1 =  fibonacci_rec(n - 1, memo)
+        fib2 = fibonacci_rec(n - 2, memo)
+        result = fib1 + fib2
+
+    memo[n] = result 
+
+    print(memo)
+
+    return result  
+
+start_time = timeit.default_timer()
+
+print(fibonacci_rec(10))  
+
+end_time = timeit.default_timer()
+print(&quot;Rechenzeit: {} Sekunden&quot;.format(end_time - start_time))
+
+# Output
+{1: 1}
+{1: 1, 0: 0}
+{1: 1, 0: 0, 2: 1}
+{1: 1, 0: 0, 2: 1, 3: 2}
+{1: 1, 0: 0, 2: 1, 3: 2, 4: 3}
+{1: 1, 0: 0, 2: 1, 3: 2, 4: 3, 5: 5}
+{1: 1, 0: 0, 2: 1, 3: 2, 4: 3, 5: 5, 6: 8}
+{1: 1, 0: 0, 2: 1, 3: 2, 4: 3, 5: 5, 6: 8, 7: 13}
+{1: 1, 0: 0, 2: 1, 3: 2, 4: 3, 5: 5, 6: 8, 7: 13, 8: 21}
+{1: 1, 0: 0, 2: 1, 3: 2, 4: 3, 5: 5, 6: 8, 7: 13, 8: 21, 9: 34}
+{1: 1, 0: 0, 2: 1, 3: 2, 4: 3, 5: 5, 6: 8, 7: 13, 8: 21, 9: 34, 10: 55}
+55
+Rechenzeit: 0.00010247699999999665 Sekunden</code></pre><p id="f398d22a-dfe6-4897-bc58-e2cdf3340466" class="">Im Output sieht man, wie sich das Dictionary memo verändert, bis die 10. Fibonacci Zahl erreicht wurde.</p><p id="229cf3ba-3f91-4588-8ec5-e82c2c4dc3ab" class=""><strong>Aufgabe 4</strong></p><p id="9a62935f-1fc3-4064-8421-aaeea2614d5e" class="">Kann der Effizienzgewinn auch erreicht werden, wenn Du nun Deine Lösung von Aufgabe 3 (Dictionary) auch in Deine Lösung zu Aufgabe 2 (pure function mit Zähler) einbaust? Warum (nicht)? Überprüfe Deine Überlegung experimentell.</p><pre id="919aaa79-0c06-4913-8238-385d53db65c5" class="code"><code>import timeit
+
+def fibonacci_rec(n: int, memo: dict = {}) -&gt; (int, int):
+    if n in memo: 
+        return memo[n]
+    elif n &lt;= 1:
+        result, cnt = n, 1
+    else:
+        fib1, cnt1 = fibonacci_rec(n - 1, memo)
+        fib2, cnt2 = fibonacci_rec(n - 2, memo)
+        result, cnt = fib1 + fib2, cnt1 + cnt2 + 1
+
+    memo[n] = result, cnt
+    return result, cnt
+
+n_list = [10,30,50,100,200,400]
+
+for n in n_list:
+    start_time = timeit.default_timer()
+
+    fib, cnt = fibonacci_rec(n)
+    print(&quot;Fibonacci: &quot;, fib)
+    print(&quot;Count: &quot;, cnt)
+
+    end_time = timeit.default_timer()
+    print(&quot;Rechenzeit: {} Sekunden&quot;.format(end_time - start_time))
+
+# Output
+Fibonacci:  55
+Count:  177
+Rechenzeit: 3.7313000000000623e-05 Sekunden
+Fibonacci:  832040
+Count:  2692537
+Rechenzeit: 2.0182000000000533e-05 Sekunden
+Fibonacci:  12586269025
+Count:  40730022147
+Rechenzeit: 1.8238999999999755e-05 Sekunden
+Fibonacci:  354224848179261915075
+Count:  1146295688027634168201
+Rechenzeit: 4.0037999999999185e-05 Sekunden
+Fibonacci:  280571172992510140037611932413038677189525
+Count:  907947388330615906394593939394821238467651
+Rechenzeit: 0.0001049689999999999 Sekunden
+Fibonacci:  176023680645013966468226945392411250770384383304492191886725992896575345044216019675
+Count:  569624596216979223515977875362921991230760177564609781972954391291938542808064647801
+Rechenzeit: 0.00039772500000000155 Sekunden</code></pre><p id="26a0c47c-4c0d-4259-bc14-bd3fe7745ce9" class="">Aus dem Output ist ersichtlich, dass die Funktion sehr schnell ist, auch für sehr grosse Eingaben. Dies zeigt, dass durch die Speicherung bereits berechneter Werte und deren Wiederverwendung bei Bedarf die Berechnung der Fibonacci-Zahlen erheblich beschleunigt werden kann.</p><p id="d33ea949-5b66-478b-9af2-7c4d7a9467cd" class="">Auch die Anzahl der Funktionsaufrufe (Count) ist bei jeder Iteration erheblich. Dies zeigt, dass ohne die Verwendung der Dictionary die Funktion eine erhebliche Anzahl von Berechnungen durchführen müsste, was zu einer ineffizienten Ausführung führen würde.</p><p id="539a29cb-98b6-4de7-9ca0-89ab67a1135e" class="">Es ist bemerkenswert, dass die Zeit für die Berechnung sogar für sehr grosse Zahlen wie n=400 extrem niedrig bleibt. Dies unterstreicht die Effizienz der Dictionary-Technik bei der Berechnung von Fibonacci-Zahlen.</p><h3 id="35019a6e-e5b3-4c33-852b-4bef070b729b" class="">2.5.3 Aufgaben mit Dekorator</h3><p id="6353f15a-4692-47a5-aed0-712932efc1e6" class=""><strong>Aufgabe 5</strong></p><pre id="fd602d63-d16b-4d4b-a044-2e39eba774fe" class="code"><code>import functools
+import timeit
+
+@functools.lru_cache
+def fibonacci_rec(n: int) -&gt; int:
+    return n if n &lt;= 1 else fibonacci_rec(n - 1) + fibonacci_rec(n - 2)
+
+n_list = [10,30,50,100,200,400]
+
+for n in n_list:
+    start_time = timeit.default_timer()
+
+    fib = fibonacci_rec(n)
+    print(&quot;Fibonacci: &quot;, fib)
+
+    end_time = timeit.default_timer()
+    print(&quot;Rechenzeit: {} Sekunden&quot;.format(end_time - start_time))
+
+# Output:
+Fibonacci:  55
+Rechenzeit: 0.0003315430000000001 Sekunden
+Fibonacci:  832040
+Rechenzeit: 6.169700000000292e-05 Sekunden
+Fibonacci:  12586269025
+Rechenzeit: 1.514199999999924e-05 Sekunden
+Fibonacci:  354224848179261915075
+Rechenzeit: 3.5190000000000915e-05 Sekunden
+Fibonacci:  280571172992510140037611932413038677189525
+Rechenzeit: 0.00010994099999999882 Sekunden
+Fibonacci:  176023680645013966468226945392411250770384383304492191886725992896575345044216019675
+Rechenzeit: 0.000241149999999999 Sekunden</code></pre><p id="470a1fe9-2b81-4399-873a-a5e614153656" class="">Aus dem Output ist ersichtlich, dass die Funktion noch schneller ist als der Code bei der Aufgabe 4, auch für sehr grosse Eingaben.</p><p id="6f4f7091-7031-4dc5-84ba-2eca938d55ad" class=""><strong>Aufgabe 6</strong></p><p id="b30da7a3-b1a2-45a8-b619-9599e62af4d4" class="">
+</p><h3 id="ab3fa5ee-28d6-4c3f-8a9f-65765472639f" class="">2.5.4 Aufgaben mit einem Fibonacci-Zahlen-Generator</h3><p id="3c53db03-0f67-44e7-8fda-30d8ed3555c8" class=""><strong>Aufgabe 7</strong></p><p id="b376f7c3-2990-4ef6-87f9-ed649fa1e6db" class="">
+</p><p id="abe86edc-8bc5-4ff9-8d4d-76a269bfaffb" class=""><strong>Aufgabe 8</strong></p><p id="a056cf5e-dbf6-4a22-acab-6bd94128ad18" class="">
+</p><h3 id="849d970c-0515-459a-b60d-115c14f38503" class="">2.5.5 Fibonacci-Funktion anders implementiert</h3><p id="8a12dc77-fa98-45c3-81df-18693bed4279" class=""><strong>Aufgabe 9</strong></p><p id="db6b488d-381a-41b5-bbda-b852adef37c5" class="">
+</p><p id="6667a0a6-055e-432a-b898-89afbffb58fa" class=""><strong>Aufgabe 10</strong></p><p id="290f6cb0-5067-4fdb-8cc1-573c25c35000" class="">
+</p><p id="723a3c0a-4a70-46cb-8033-283f08de1dd7" class=""><strong>Aufgabe 11</strong></p><p id="de7c4682-cf1a-4b9d-8af8-eb8b1fac4a26" class="">
+</p><h2 id="2f581a48-2729-4a3a-8267-5edf145c597f" class="">2.6 <strong>Funktionales Game of Life</strong></h2><p id="f17907de-2618-44a0-bc91-d55b270489bc" class="">
+</p></div></article></body></html>
