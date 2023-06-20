@@ -31,8 +31,8 @@ Hier findet man die Aufgaben und deren Python Dateien für eine bessere Übersic
 #### 1.6 Underscores
 [Python File](https://github.com/alexschillingfhnw/ofp/blob/main/Python%20Files/1.6_underscores.py)
 
-
-#### 1.7 Messdatenanalyse
+#### 1.7 OO Bank
+[Python File](https://github.com/alexschillingfhnw/ofp/blob/main/Python%20Files/1.7_oop_bank.py)
 
 ### 2. Funktionale Programmierung
 #### 2.1 Einführung
@@ -48,6 +48,8 @@ Hier findet man die Aufgaben und deren Python Dateien für eine bessere Übersic
 ##### 2.1.2 Aufgabe 3 - Mein Filter
 [Python File](https://github.com/alexschillingfhnw/ofp/blob/main/Python%20Files/2.1.3_mein_filter.py)
 
+#### 2.2 Funktionale Programmierung (Video Serien)
+[Python File](https://github.com/alexschillingfhnw/ofp/blob/main/Python%20Files/2.2_functional_programming.py)
 
 #### 2.5 Funktionales Programmieren mit Fibonacci-Zahlen
 
