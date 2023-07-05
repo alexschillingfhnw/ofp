@@ -1,7 +1,10 @@
 # Objektorientiert und Funktional Programmieren
 ## Arbeitsjournal
+Das [Lernjournal](https://github.com/alexschillingfhnw/ofp/blob/main/OFP_Lernjournal_Alexander_Schilling.html) wurde mittels Notion erstellt und als HTML Datei exportiert. Die Datei sollte im Browser geöffnet werden für eine gute Ansicht.
+
 ## Python Aufgaben
-Hier findet man die Aufgaben und deren Python Dateien für eine bessere Übersicht
+Hier findet man die Aufgaben und deren Python Dateien für eine bessere Übersicht.
+
 ### 1. Objektorientierte Programmierung
 #### 1.1 Prinzipien
 [Python File](https://github.com/alexschillingfhnw/ofp/blob/main/Python%20Files/1.1_prinzipien.py)
